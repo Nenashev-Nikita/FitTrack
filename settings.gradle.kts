@@ -29,5 +29,9 @@ dependencyResolutionManagement {
 }
 
 include(":composeApp")
+
+//features
+include(":features:main")
+
 //design
 include(":design:theme")
