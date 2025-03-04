@@ -38,3 +38,4 @@ include(":design:theme")
 
 //core
 include(":core:database")
+include(":core:network")
