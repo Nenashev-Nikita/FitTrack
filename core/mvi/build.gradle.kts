@@ -20,7 +20,7 @@ kotlin {
         iosSimulatorArm64()
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
-            baseName = "design_theme"
+            baseName = "coreMVI"
             isStatic = true
         }
     }

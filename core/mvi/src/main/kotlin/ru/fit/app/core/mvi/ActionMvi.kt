@@ -1,0 +1,3 @@
+package ru.fit.app.core.mvi
+
+interface ActionMvi
