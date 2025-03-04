@@ -44,7 +44,7 @@ kotlin {
 }
 
 android {
-    namespace = "ru.fit.app.design.theme" // Убедитесь, что namespace уникален для вашего модуля
+    namespace = "ru.fit.app.design.theme"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {

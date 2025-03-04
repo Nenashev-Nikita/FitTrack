@@ -75,7 +75,13 @@ android {
 
 dependencies {
 	implementation(project(":features:main"))
+
 	implementation(project(":design:theme"))
+	implementation(project(":design:resources"))
+
+	implementation(project(":core:database"))
+	implementation(project(":core:network"))
+	implementation(project(":core:mvi"))
 
 	debugImplementation(compose.uiTooling)
 }
