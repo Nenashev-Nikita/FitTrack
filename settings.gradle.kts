@@ -35,3 +35,6 @@ include(":features:main")
 
 //design
 include(":design:theme")
+
+//core
+include(":core:database")
