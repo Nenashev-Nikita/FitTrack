@@ -13,8 +13,8 @@ import androidx.compose.ui.Modifier
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
-import fittrack.composeapp.generated.resources.Res
-import fittrack.composeapp.generated.resources.compose_multiplatform
+import fittrack.app.generated.resources.Res
+import fittrack.app.generated.resources.compose_multiplatform
 
 @Composable
 @Preview
