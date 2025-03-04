@@ -33,6 +33,9 @@ include(":app")
 //features
 include(":features:main")
 
+//shared
+include(":shared")
+
 //design
 include(":design:theme")
 include(":design:resources")
