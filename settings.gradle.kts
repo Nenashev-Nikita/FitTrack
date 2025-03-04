@@ -35,6 +35,7 @@ include(":features:main")
 
 //design
 include(":design:theme")
+include(":design:resources")
 
 //core
 include(":core:database")
