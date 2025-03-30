@@ -39,6 +39,7 @@ include(":shared")
 //design
 include(":design:theme")
 include(":design:resources")
+include(":design:component")
 
 //core
 include(":core:database")
