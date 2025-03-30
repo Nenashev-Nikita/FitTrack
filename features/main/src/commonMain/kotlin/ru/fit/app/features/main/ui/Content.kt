@@ -1,4 +1,4 @@
-package ru.fit.app.ui
+package ru.fit.app.features.main.ui
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Column
