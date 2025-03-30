@@ -82,7 +82,7 @@ android {
 }
 
 dependencies {
-	implementation(project(":features:main"))
+	implementation(project(":feature:main"))
 
 	implementation(project(":design:theme"))
 	implementation(project(":design:resources"))

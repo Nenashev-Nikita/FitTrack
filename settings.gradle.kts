@@ -31,7 +31,7 @@ dependencyResolutionManagement {
 include(":app")
 
 //features
-include(":features:main")
+include(":feature:main")
 
 //shared
 include(":shared")
