@@ -34,7 +34,7 @@ include(":app")
 include(":feature:main")
 
 //shared
-include(":shared")
+include(":shared:training")
 
 //design
 include(":design:theme")
