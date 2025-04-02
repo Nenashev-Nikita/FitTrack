@@ -84,6 +84,8 @@ android {
 dependencies {
 	implementation(project(":feature:main"))
 
+	implementation(project(":shared:training"))
+
 	implementation(project(":design:theme"))
 	implementation(project(":design:resources"))
 

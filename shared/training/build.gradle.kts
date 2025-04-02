@@ -27,9 +27,9 @@ kotlin {
 
 	sourceSets {
 
-		androidMain.dependencies {
-		}
+		androidMain.dependencies {}
 		commonMain.dependencies {
+			implementation(libs.koin.core)
 		}
 	}
 }
