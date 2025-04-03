@@ -33,8 +33,7 @@ kotlin {
 			implementation(compose.preview)
 			implementation(libs.androidx.activity.compose)
 
-			implementation(libs.koin.compose)
-			implementation(libs.koin.compose.viewmodel)
+			implementation(libs.koin.android)
 		}
 		commonMain.dependencies {
 			implementation(compose.runtime)
@@ -89,9 +88,9 @@ dependencies {
 	implementation(project(":design:theme"))
 	implementation(project(":design:resources"))
 
-	implementation(project(":core:database"))
-	implementation(project(":core:network"))
-	implementation(project(":core:mvi"))
+//	implementation(project(":core:database"))
+//	implementation(project(":core:network"))
+//	implementation(project(":core:mvi"))
 
 	debugImplementation(compose.uiTooling)
 }

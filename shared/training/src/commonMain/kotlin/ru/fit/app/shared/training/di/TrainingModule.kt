@@ -7,7 +7,7 @@ import ru.fit.app.shared.training.domain.usecase.GetTrainingsUseCase
 
 val TrainingModule = module {
 
-	factory<TrainingRepository> { TrainingRepositoryImpl(get()) }
+	factory<TrainingRepository> { TrainingRepositoryImpl() }
 
 	factory { GetTrainingsUseCase(get()) }
 }

@@ -42,6 +42,6 @@ include(":design:resources")
 include(":design:component")
 
 //core
-include(":core:database")
-include(":core:network")
-include(":core:mvi")
+//include(":core:database")
+//include(":core:network")
+//include(":core:mvi")
