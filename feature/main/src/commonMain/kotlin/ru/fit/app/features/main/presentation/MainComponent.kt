@@ -1,9 +1,11 @@
 package ru.fit.app.features.main.presentation
 
 import com.arkivanov.decompose.ComponentContext
+import com.arkivanov.essenty.lifecycle.subscribe
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -19,6 +21,12 @@ class MainComponent(
 
 	private val _screenState = MutableStateFlow<State>(State.Initial)
 	val screenState: StateFlow<State> = _screenState.asStateFlow()
+
+	init {
+		lifecycle.subscribe(
+			onDestroy = { coroutineScope.cancel() }
+		)
+	}
 
 	fun loadContent() {
 		coroutineScope.launch {

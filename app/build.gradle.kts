@@ -6,6 +6,7 @@ plugins {
 	alias(libs.plugins.composeMultiplatform)
 	alias(libs.plugins.composeCompiler)
 	alias(libs.plugins.kotlinSerialization)
+	id("kotlin-parcelize")
 }
 
 kotlin {
@@ -33,6 +34,7 @@ kotlin {
 			implementation(libs.androidx.activity.compose)
 
 			implementation(libs.koin.android)
+			implementation(libs.kotlin.parcelize.runtime)
 		}
 		commonMain.dependencies {
 			implementation(compose.runtime)
@@ -41,6 +43,7 @@ kotlin {
 			implementation(compose.ui)
 			implementation(compose.components.resources)
 			implementation(compose.components.uiToolingPreview)
+			implementation(compose.runtime)
 
 			implementation(libs.koin.core)
 			implementation(libs.koin.compose)
@@ -50,6 +53,7 @@ kotlin {
 			implementation(libs.decompose.jetbrains)
 
 			implementation(libs.kotlinx.serialization.json)
+			implementation(libs.kotlinx.serialization.core)
 
 			implementation(project(":feature:main"))
 			implementation(project(":feature:exercise"))

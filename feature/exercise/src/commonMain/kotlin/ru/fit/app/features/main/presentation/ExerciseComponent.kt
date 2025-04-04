@@ -1,0 +1,1 @@
+package ru.fit.app.features.main.presentationimport com.arkivanov.decompose.ComponentContextclass ExerciseComponent(	componentContext: ComponentContext,) : ComponentContext by componentContext {}

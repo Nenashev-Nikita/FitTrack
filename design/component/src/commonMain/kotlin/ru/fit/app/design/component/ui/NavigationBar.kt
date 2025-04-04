@@ -1,0 +1,1 @@
+package ru.fit.app.design.component.uiimport androidx.compose.material.BottomNavigationimport androidx.compose.runtime.Composable@Composablefun navigationBar() {	BottomNavigation {	}}

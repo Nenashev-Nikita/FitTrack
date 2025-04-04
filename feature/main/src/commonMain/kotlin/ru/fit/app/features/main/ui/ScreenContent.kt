@@ -18,7 +18,7 @@ import ru.fit.app.features.main.presentation.MainComponent
 import ru.fit.app.features.main.presentation.State
 
 @Composable
-fun Content(component: MainComponent) {
+fun ScreenContent(component: MainComponent) {
 	val screenState by component.screenState.collectAsState()
 	val lazyListState = rememberLazyListState()
 

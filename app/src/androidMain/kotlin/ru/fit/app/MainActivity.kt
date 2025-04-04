@@ -11,7 +11,9 @@ import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
 import ru.fit.app.di.NavigationModule
 import ru.fit.app.features.main.di.MainModule
+import ru.fit.app.features.main.presentation.ExerciseComponent
 import ru.fit.app.features.main.presentation.MainComponent
+import ru.fit.app.features.main.presentation.ProgramComponent
 import ru.fit.app.navigation.RootComponent
 import ru.fit.app.shared.training.di.TrainingModule
 
@@ -37,7 +39,17 @@ class MainActivity : ComponentActivity() {
 						context,
 						getTrainingsUseCase = get(),
 					)
-				}
+				},
+				programComponentFactory = { context ->
+					ProgramComponent(
+						context,
+					)
+				},
+				exerciseComponentFactory = { context ->
+					ExerciseComponent(
+						context,
+					)
+				},
 			)
 		}
 
