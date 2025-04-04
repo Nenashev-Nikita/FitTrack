@@ -1,4 +1,3 @@
-import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -6,11 +5,11 @@ plugins {
 	alias(libs.plugins.androidApplication)
 	alias(libs.plugins.composeMultiplatform)
 	alias(libs.plugins.composeCompiler)
+	alias(libs.plugins.kotlinSerialization)
 }
 
 kotlin {
 	androidTarget {
-		@OptIn(ExperimentalKotlinGradlePluginApi::class)
 		compilerOptions {
 			jvmTarget.set(JvmTarget.JVM_11)
 		}
@@ -42,13 +41,22 @@ kotlin {
 			implementation(compose.ui)
 			implementation(compose.components.resources)
 			implementation(compose.components.uiToolingPreview)
-			implementation(libs.androidx.lifecycle.viewmodel)
-			implementation(libs.androidx.lifecycle.runtime.compose)
 
-			api(libs.koin.core)
+			implementation(libs.koin.core)
 			implementation(libs.koin.compose)
 			implementation(libs.koin.compose.viewmodel)
 
+			implementation(libs.decompose)
+			implementation(libs.decompose.jetbrains)
+
+			implementation(libs.kotlinx.serialization.json)
+
+			implementation(project(":feature:main"))
+
+			implementation(project(":shared:training"))
+
+			implementation(project(":design:theme"))
+			implementation(project(":design:resources"))
 		}
 	}
 }
@@ -81,13 +89,6 @@ android {
 }
 
 dependencies {
-	implementation(project(":feature:main"))
-
-	implementation(project(":shared:training"))
-
-	implementation(project(":design:theme"))
-	implementation(project(":design:resources"))
-
 //	implementation(project(":core:database"))
 //	implementation(project(":core:network"))
 //	implementation(project(":core:mvi"))

@@ -38,13 +38,11 @@ kotlin {
             implementation(compose.foundation)
             implementation(compose.material)
 
-            implementation(libs.navigation.compose)
-            implementation(libs.viewmodel.compose)
-
             implementation(libs.koin.core)
             implementation(libs.koin.compose)
             implementation(libs.koin.compose.viewmodel)
-            implementation(libs.koin.compose.viewmodel)
+
+            implementation(libs.decompose)
         }
     }
 }

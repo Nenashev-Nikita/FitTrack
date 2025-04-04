@@ -3,22 +3,46 @@ package ru.fit.app
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
-import ru.fit.app.features.main.ui.Content
+import com.arkivanov.decompose.ExperimentalDecomposeApi
+import com.arkivanov.decompose.retainedComponent
+import org.koin.android.ext.android.get
+import org.koin.android.ext.koin.androidLogger
+import org.koin.core.context.startKoin
+import org.koin.core.logger.Level
+import ru.fit.app.di.NavigationModule
+import ru.fit.app.features.main.di.MainModule
+import ru.fit.app.features.main.presentation.MainComponent
+import ru.fit.app.navigation.RootComponent
+import ru.fit.app.shared.training.di.TrainingModule
 
+@OptIn(ExperimentalDecomposeApi::class)
 class MainActivity : ComponentActivity() {
-
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
+
+		startKoin {
+			androidLogger(Level.DEBUG)
+			modules(
+				TrainingModule,
+				MainModule,
+				NavigationModule
+			)
+		}
+
+		val root = retainedComponent {
+			RootComponent(
+				componentContext = it,
+				mainComponentFactory = { context ->
+					MainComponent(
+						context,
+						getTrainingsUseCase = get(),
+					)
+				}
+			)
+		}
+
 		setContent {
-			Content()
+			App(root)
 		}
 	}
-}
-
-@Preview
-@Composable
-fun AppAndroidPreview() {
-	Screen()
 }

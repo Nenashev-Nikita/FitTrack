@@ -1,6 +1,6 @@
 package ru.fit.app.features.main.presentation
 
-import androidx.lifecycle.ViewModel
+import com.arkivanov.decompose.ComponentContext
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -10,9 +10,10 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import ru.fit.app.shared.training.domain.usecase.GetTrainingsUseCase
 
-class MainViewModel(
+class MainComponent(
+	componentContext: ComponentContext,
 	val getTrainingsUseCase: GetTrainingsUseCase,
-) : ViewModel() {
+) : ComponentContext by componentContext {
 
 	private val coroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
 

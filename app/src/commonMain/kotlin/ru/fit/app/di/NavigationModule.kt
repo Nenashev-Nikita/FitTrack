@@ -1,0 +1,1 @@
+package ru.fit.app.diimport com.arkivanov.decompose.ComponentContextimport org.koin.dsl.moduleimport ru.fit.app.navigation.RootComponentval NavigationModule = module {	factory { (componentContext: ComponentContext) ->		RootComponent(			componentContext = componentContext,			mainComponentFactory = get()		)	}}

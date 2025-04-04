@@ -1,10 +1,14 @@
 package ru.fit.app.features.main.di
 
-import org.koin.core.module.dsl.viewModel
+import com.arkivanov.decompose.ComponentContext
 import org.koin.dsl.module
-import ru.fit.app.features.main.presentation.MainViewModel
+import ru.fit.app.features.main.presentation.MainComponent
 
 val MainModule = module {
-
-	viewModel { MainViewModel(get()) }
+	factory { (componentContext: ComponentContext) ->
+		MainComponent(
+			componentContext = componentContext,
+			getTrainingsUseCase = get()
+		)
+	}
 }

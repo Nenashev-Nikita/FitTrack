@@ -14,14 +14,12 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import org.koin.compose.viewmodel.koinViewModel
-import ru.fit.app.features.main.presentation.MainViewModel
+import ru.fit.app.features.main.presentation.MainComponent
 import ru.fit.app.features.main.presentation.State
 
 @Composable
-fun Content() {
-	val viewModel = koinViewModel<MainViewModel>()
-	val screenState by viewModel.screenState.collectAsState()
+fun Content(component: MainComponent) {
+	val screenState by component.screenState.collectAsState()
 	val lazyListState = rememberLazyListState()
 
 	MaterialTheme {
@@ -31,7 +29,7 @@ fun Content() {
 			when (val state = screenState) {
 				State.Initial    -> {
 					LaunchedEffect(Unit) {
-						viewModel.loadContent()
+						component.loadContent()
 					}
 				}
 
