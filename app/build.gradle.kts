@@ -44,6 +44,9 @@ kotlin {
 			implementation(compose.components.resources)
 			implementation(compose.components.uiToolingPreview)
 			implementation(compose.runtime)
+			implementation(compose.materialIconsExtended)
+
+			implementation(libs.compose.material3)
 
 			implementation(libs.koin.core)
 			implementation(libs.koin.compose)

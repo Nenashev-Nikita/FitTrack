@@ -2,12 +2,9 @@ package ru.fit.app.features.main.ui
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.material.CircularProgressIndicator
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -20,7 +17,6 @@ import ru.fit.app.features.main.presentation.State
 @Composable
 fun ScreenContent(component: MainComponent) {
 	val screenState by component.screenState.collectAsState()
-	val lazyListState = rememberLazyListState()
 
 	MaterialTheme {
 		Column(
@@ -38,15 +34,7 @@ fun ScreenContent(component: MainComponent) {
 				State.Loading    -> CircularProgressIndicator()
 
 				is State.Content -> {
-					LazyColumn(
-						Modifier.fillMaxWidth(),
-						horizontalAlignment = Alignment.CenterHorizontally,
-						state = lazyListState,
-					) {
-						items(state.trainings) { training ->
-							Text(text = training.name)
-						}
-					}
+					Content(trainings = state.trainings)
 				}
 			}
 		}
