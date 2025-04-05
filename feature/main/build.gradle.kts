@@ -34,6 +34,8 @@ kotlin {
         commonMain.dependencies {
             implementation(project(":shared:training"))
 
+            implementation(project(":core:presentation"))
+
             implementation(compose.runtime)
             implementation(compose.foundation)
             implementation(compose.material)
