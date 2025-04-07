@@ -11,20 +11,26 @@ class TrainingRepositoryImpl(
 	override suspend fun getAll(): List<Training> =
 		listOf(
 			Training(
+				id = 1,
 				name = "Трениновка ног",
 				date = 1000,
-				exercise = Exercise(
-					name = "",
-					approaches = listOf()
-				)
+				exercise = listOf(
+					Exercise(
+						name = "",
+						approaches = listOf()
+					)
+				),
 			),
 			Training(
+				id = 2,
 				name = "Трениновка рук",
 				date = 1000,
-				exercise = Exercise(
-					name = "",
-					approaches = listOf()
+				exercise = listOf(
+					Exercise(
+						name = "",
+						approaches = listOf()
+					)
 				)
-			)
+			),
 		)
 }

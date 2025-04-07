@@ -61,6 +61,7 @@ kotlin {
 			implementation(project(":feature:main"))
 			implementation(project(":feature:exercise"))
 			implementation(project(":feature:program"))
+			implementation(project(":feature:workout"))
 
 			implementation(project(":shared:training"))
 

@@ -34,6 +34,7 @@ include(":app")
 include(":feature:main")
 include(":feature:exercise")
 include(":feature:program")
+include(":feature:workout")
 
 //shared
 include(":shared:training")
