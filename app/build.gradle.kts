@@ -34,8 +34,10 @@ kotlin {
 			implementation(libs.androidx.activity.compose)
 
 			implementation(libs.koin.android)
+
 			implementation(libs.kotlin.parcelize.runtime)
 		}
+
 		commonMain.dependencies {
 			implementation(compose.runtime)
 			implementation(compose.foundation)
@@ -52,8 +54,8 @@ kotlin {
 			implementation(libs.koin.compose)
 			implementation(libs.koin.compose.viewmodel)
 
-			implementation(libs.decompose)
-			implementation(libs.decompose.jetbrains)
+			implementation(libs.decompose.core)
+			implementation(libs.decompose.extensions.compose)
 
 			implementation(libs.kotlinx.serialization.json)
 			implementation(libs.kotlinx.serialization.core)

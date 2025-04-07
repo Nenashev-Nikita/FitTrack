@@ -32,7 +32,7 @@ kotlin {
 		commonMain.dependencies {
 			implementation(compose.foundation)
 
-			implementation(libs.decompose)
+			implementation(libs.decompose.core)
 		}
 	}
 }

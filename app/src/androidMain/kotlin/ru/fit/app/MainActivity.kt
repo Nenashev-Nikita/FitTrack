@@ -3,7 +3,6 @@ package ru.fit.app
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import com.arkivanov.decompose.ExperimentalDecomposeApi
 import com.arkivanov.decompose.retainedComponent
 import org.koin.android.ext.android.get
 import org.koin.android.ext.koin.androidLogger
@@ -22,7 +21,6 @@ import ru.fit.app.features.workout.presentation.WorkoutComponent
 import ru.fit.app.navigation.RootComponent
 import ru.fit.app.shared.training.di.TrainingModule
 
-@OptIn(ExperimentalDecomposeApi::class)
 class MainActivity : ComponentActivity() {
 
 	override fun onCreate(savedInstanceState: Bundle?) {

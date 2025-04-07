@@ -24,7 +24,7 @@ koin = "4.0.0"
 ktor = "3.1.1"
 
 #decompose
-decompose = "2.2.0"
+decompose = "3.3.0"
 
 #material
 material3 = "1.7.0"
@@ -67,8 +67,8 @@ ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx
 ktor-client-auth = { module = "io.ktor:ktor-client-auth", version.ref = "ktor" }
 
 #decompose
-decompose = { module = "com.arkivanov.decompose:decompose", version.ref = "decompose" }
-decompose-jetbrains = { module = "com.arkivanov.decompose:extensions-compose-jetbrains", version.ref = "decompose" }
+decompose-core = { module = "com.arkivanov.decompose:decompose", version.ref = "decompose" }
+decompose-extensions-compose = { module = "com.arkivanov.decompose:extensions-compose", version.ref = "decompose" }
 
 #material
 compose-material3 = { module = "org.jetbrains.compose.material3:material3", version.ref = "material3" }

@@ -36,7 +36,7 @@ kotlin {
 			implementation(libs.koin.compose)
 			implementation(libs.koin.compose.viewmodel)
 
-			implementation(libs.decompose)
+			implementation(libs.decompose.core)
 
 			implementation(project(":shared:training"))
 		}
