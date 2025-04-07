@@ -17,9 +17,10 @@ import com.arkivanov.decompose.extensions.compose.jetbrains.stack.Children
 import com.arkivanov.decompose.extensions.compose.jetbrains.stack.animation.slide
 import com.arkivanov.decompose.extensions.compose.jetbrains.stack.animation.stackAnimation
 import com.arkivanov.decompose.router.stack.active
-import ru.fit.app.features.main.ui.ScreenContent
 import ru.fit.app.features.main.ui.ScreenExercise
+import ru.fit.app.features.main.ui.ScreenMain
 import ru.fit.app.features.main.ui.ScreenProgram
+import ru.fit.app.features.workout.ui.ScreenWorkout
 import ru.fit.app.navigation.RootComponent
 import ru.fit.app.navigation.RootComponent.Config
 
@@ -56,12 +57,14 @@ fun App(root: RootComponent) {
 				animation = stackAnimation(slide())
 			) { child ->
 				when (val instance = child.instance) {
-					
+
 					is RootComponent.Child.Exercise -> ScreenExercise(instance.component)
 
-					is RootComponent.Child.Main -> ScreenContent(instance.component)
+					is RootComponent.Child.Main    -> ScreenMain(instance.component)
 
 					is RootComponent.Child.Program  -> ScreenProgram(instance.component)
+
+					is RootComponent.Child.Workout -> ScreenWorkout(instance.component)
 				}
 			}
 		}

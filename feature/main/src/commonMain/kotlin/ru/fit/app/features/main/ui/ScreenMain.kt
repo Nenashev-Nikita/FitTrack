@@ -15,7 +15,7 @@ import ru.fit.app.features.main.presentation.MainComponent
 import ru.fit.app.features.main.presentation.State
 
 @Composable
-fun ScreenContent(component: MainComponent) {
+fun ScreenMain(component: MainComponent) {
 	val screenState by component.screenState.collectAsState()
 
 	MaterialTheme {
@@ -34,7 +34,10 @@ fun ScreenContent(component: MainComponent) {
 				State.Loading    -> CircularProgressIndicator()
 
 				is State.Content -> {
-					Content(trainings = state.trainings)
+					Content(
+						trainings = state.trainings,
+						onWorkoutSelected = component::navigationWorkout
+					)
 				}
 			}
 		}

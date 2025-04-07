@@ -5,10 +5,11 @@ import org.koin.dsl.module
 import ru.fit.app.features.main.presentation.MainComponent
 
 val MainModule = module {
-	factory { (componentContext: ComponentContext) ->
+	factory { (componentContext: ComponentContext, onWorkoutSelected: (Int) -> Unit) ->
 		MainComponent(
 			componentContext = componentContext,
-			getTrainingsUseCase = get()
+			getTrainingsUseCase = get(),
+			onWorkoutSelected = onWorkoutSelected
 		)
 	}
 }
