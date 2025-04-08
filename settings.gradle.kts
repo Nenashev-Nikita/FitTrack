@@ -35,6 +35,11 @@ include(":feature:main")
 include(":feature:exercise")
 include(":feature:program")
 include(":feature:workout")
+include(":feature:profile")
+include(":feature:progress")
+include(":feature:list")
+include(":feature:detail")
+include(":feature:selection")
 
 //shared
 include(":shared:training")
