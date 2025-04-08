@@ -1,7 +1,7 @@
 package ru.fit.app.features.workout.data.repository
 
+import kotlinx.datetime.Instant
 import ru.fit.app.features.workout.domain.repository.WorkoutRepository
-import ru.fit.app.shared.training.domain.entity.Approach
 import ru.fit.app.shared.training.domain.entity.Exercise
 import ru.fit.app.shared.training.domain.entity.Training
 
@@ -11,26 +11,22 @@ class WorkoutRepositoryImpl : WorkoutRepository {
 		return Training(
 			id = 1,
 			name = "Тренировка ног",
-			date = 100L,
+			date = Instant.parse("2024-06-15T12:00:00Z"),
 			exercise = listOf(
 				Exercise(
+					id = 1,
 					name = "Приседания",
-					approaches = listOf(
-						Approach(
-							weight = 2,
-							repetitions = 8,
-						)
-					),
+					stepByStepDescription = null,
+					img = null,
+					approaches = listOf(),
 				),
 				Exercise(
-					name = "Сальто назад",
-					approaches = listOf(
-						Approach(
-							weight = 5,
-							repetitions = 5,
-						)
-					),
-				)
+					id = 2,
+					name = "Выпады",
+					stepByStepDescription = null,
+					img = null,
+					approaches = listOf(),
+				),
 			),
 		)
 	}

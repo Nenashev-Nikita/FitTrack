@@ -38,6 +38,8 @@ kotlin {
 
 			implementation(libs.decompose.core)
 
+			implementation(libs.kotlinx.datetime)
+
 			implementation(project(":shared:training"))
 		}
 	}

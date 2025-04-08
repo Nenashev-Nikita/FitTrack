@@ -8,16 +8,18 @@ class ProgressExerciseRepositoryImpl : ProgressExerciseRepository {
 	override suspend fun get(): List<Exercise> =
 		listOf(
 			Exercise(
+				id = 1,
 				name = "Приседания",
-				approaches = listOf(
-
-				)
+				stepByStepDescription = null,
+				img = null,
+				approaches = listOf(),
 			),
 			Exercise(
+				id = 2,
 				name = "Выпады",
-				approaches = listOf(
-
-				)
-			)
+				stepByStepDescription = null,
+				img = null,
+				approaches = listOf(),
+			),
 		)
 }

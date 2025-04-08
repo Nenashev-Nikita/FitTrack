@@ -53,5 +53,5 @@ include(":design:component")
 //core
 include(":core:presentation")
 //include(":core:database")
-//include(":core:network")
+include(":core:network")
 //include(":core:mvi")

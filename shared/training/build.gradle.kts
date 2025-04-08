@@ -28,7 +28,9 @@ kotlin {
 
 	sourceSets {
 
-		androidMain.dependencies {}
+		androidMain.dependencies {
+			implementation(libs.ktor.client.android)
+		}
 		commonMain.dependencies {
 			implementation(libs.koin.core)
 			implementation(libs.kotlinx.datetime)
@@ -40,6 +42,8 @@ kotlin {
 			implementation(libs.ktor.client.content.negotiation)
 
 			implementation(project(":shared:util"))
+			
+			implementation(project(":core:network"))
 		}
 
 		iosMain.dependencies {
