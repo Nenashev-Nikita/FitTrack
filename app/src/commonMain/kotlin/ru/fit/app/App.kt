@@ -12,11 +12,9 @@ import com.arkivanov.decompose.extensions.compose.stack.animation.plus
 import com.arkivanov.decompose.extensions.compose.stack.animation.predictiveback.predictiveBackAnimation
 import com.arkivanov.decompose.extensions.compose.stack.animation.scale
 import com.arkivanov.decompose.extensions.compose.stack.animation.stackAnimation
-import ru.fit.app.features.main.ui.ScreenExercise
-import ru.fit.app.features.main.ui.ScreenMain
-import ru.fit.app.features.main.ui.ScreenProgram
 import ru.fit.app.features.workout.ui.ScreenWorkout
-import ru.fit.app.navigation.RootComponent
+import ru.fit.app.presentation.RootComponent
+import ru.fit.app.tabs.TabsContent
 
 @Composable
 fun App(component: RootComponent, modifier: Modifier = Modifier) {
@@ -42,13 +40,9 @@ private fun Children(component: RootComponent, modifier: Modifier = Modifier) {
 	) {
 		Surface(modifier = Modifier.fillMaxSize()) {
 			when (val child = it.instance) {
-				is RootComponent.Child.Exercise -> ScreenExercise(child.component)
+				is RootComponent.Child.Workout -> ScreenWorkout(child.component)
 
-				is RootComponent.Child.Main     -> ScreenMain(child.component)
-
-				is RootComponent.Child.Program  -> ScreenProgram(child.component)
-
-				is RootComponent.Child.Workout  -> ScreenWorkout(child.component)
+				is RootComponent.Child.TabsChild -> TabsContent(child.component)
 			}
 		}
 	}
