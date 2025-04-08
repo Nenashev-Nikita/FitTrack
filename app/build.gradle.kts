@@ -65,10 +65,10 @@ kotlin {
 			implementation(project(":feature:program"))
 			implementation(project(":feature:workout"))
 			implementation(project(":feature:profile"))
-			implementation(project(":feature:progress"))
-			implementation(project(":feature:list"))
-			implementation(project(":feature:detail"))
-			implementation(project(":feature:selection"))
+//			implementation(project(":feature:progress"))
+//			implementation(project(":feature:list"))
+//			implementation(project(":feature:detail"))
+//			implementation(project(":feature:selection"))
 
 			implementation(project(":shared:training"))
 

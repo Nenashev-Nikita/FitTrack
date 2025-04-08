@@ -1,4 +1,4 @@
-package ru.fit.app.features.main.ui
+package ru.fit.app.features.progress.list.ui
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -11,11 +11,11 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import ru.fit.app.features.main.presentation.MainComponent
-import ru.fit.app.features.main.presentation.State
+import ru.fit.app.features.progress.list.presentation.ListProgressComponent
+import ru.fit.app.features.progress.list.presentation.State
 
 @Composable
-fun ScreenMain(component: MainComponent) {
+fun ScreenListProgress(component: ListProgressComponent) {
 	val screenState by component.screenState.collectAsState()
 
 	MaterialTheme {
@@ -35,9 +35,9 @@ fun ScreenMain(component: MainComponent) {
 
 				is State.Content -> {
 					Content(
-						trainings = state.trainings,
-						onWorkoutSelected = component::navigationWorkout,
-						onProfileSelected = component::navigationProfile,
+						exercises = state.exercises,
+						onWorkoutSelected = component::navigationDetails,
+						onBack = component::navigationBack,
 					)
 				}
 			}

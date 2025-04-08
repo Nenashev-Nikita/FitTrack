@@ -32,6 +32,8 @@ kotlin {
             implementation(libs.androidx.activity.compose)
         }
         commonMain.dependencies {
+            implementation(project(":design:component"))
+
             implementation(project(":shared:training"))
 
             implementation(project(":core:presentation"))

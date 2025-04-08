@@ -1,4 +1,4 @@
-package ru.fit.app.features.main.presentation
+package ru.fit.app.features.progress.list.presentation
 
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.essenty.lifecycle.subscribe
@@ -10,13 +10,13 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import ru.fit.app.shared.training.domain.usecase.GetTrainingsUseCase
+import ru.fit.app.features.progress.list.domain.usecase.GetProgressExerciseUseCase
 
-class MainComponent(
+class ListProgressComponent(
 	componentContext: ComponentContext,
-	private val getTrainingsUseCase: GetTrainingsUseCase,
-	private val onWorkoutSelected: (Int) -> Unit,
-	private val onProfileSelected: () -> Unit,
+	private val getProgressExerciseUseCase: GetProgressExerciseUseCase,
+	private val openDetailsProgress: (Int) -> Unit,
+	private val back: () -> Unit,
 ) : ComponentContext by componentContext {
 
 	private val coroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
@@ -34,9 +34,9 @@ class MainComponent(
 		coroutineScope.launch {
 			_screenState.value = State.Loading
 			try {
-				val trainings = getTrainingsUseCase()
+				val exercises = getProgressExerciseUseCase()
 				_screenState.value = State.Content(
-					trainings = trainings,
+					exercises = exercises,
 				)
 			} catch (e: Exception) {
 				_screenState.value = State.Error
@@ -44,11 +44,11 @@ class MainComponent(
 		}
 	}
 
-	fun navigationWorkout(id: Int) {
-		onWorkoutSelected(id)
+	fun navigationDetails(id: Int) {
+		openDetailsProgress(id)
 	}
 
-	fun navigationProfile() {
-		onProfileSelected()
+	fun navigationBack() {
+		back()
 	}
 }

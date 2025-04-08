@@ -14,6 +14,12 @@ import ru.fit.app.features.main.di.ExerciseModule
 import ru.fit.app.features.main.di.MainModule
 import ru.fit.app.features.main.di.ProgramModule
 import ru.fit.app.features.main.presentation.MainComponent
+import ru.fit.app.features.profile.di.profileModule
+import ru.fit.app.features.profile.presentation.ProfileComponent
+import ru.fit.app.features.progress.details.di.DetailsProgressModule
+import ru.fit.app.features.progress.details.presentation.DetailsProgressComponent
+import ru.fit.app.features.progress.list.di.ListProgressModule
+import ru.fit.app.features.progress.list.presentation.ListProgressComponent
 import ru.fit.app.features.workout.di.WorkoutModule
 import ru.fit.app.features.workout.presentation.WorkoutComponent
 import ru.fit.app.presentation.RootComponent
@@ -39,15 +45,18 @@ class MainActivity : ComponentActivity() {
 				ProgramModule,
 				ExerciseModule,
 				WorkoutModule,
+				profileModule,
+				ListProgressModule,
+				DetailsProgressModule,
 			)
 		}
 
 		val root = retainedComponent {
 			RootComponent(
 				componentContext = it,
-				mainComponentFactory = { context, onWorkoutSelected ->
+				mainComponentFactory = { context, onWorkoutSelected, onProfileSelected ->
 					get<MainComponent>(parameters = {
-						parametersOf(context, onWorkoutSelected)
+						parametersOf(context, onWorkoutSelected, onProfileSelected)
 					})
 				},
 				workoutComponentFactory = { context, id ->
@@ -55,6 +64,23 @@ class MainActivity : ComponentActivity() {
 						parametersOf(context, id)
 					})
 				},
+				profileComponentFactory = { componentContext, onMain, onList ->
+					get<ProfileComponent>(
+						parameters = {
+							parametersOf(componentContext, onMain, onList)
+						}
+					)
+				},
+				detailsProgressComponentFactory = { context, onBack ->
+					get<DetailsProgressComponent>(parameters = {
+						parametersOf(context, onBack)
+					})
+				},
+				listProgressComponentFactory = { context, onMain, onDetailsProgress ->
+					get<ListProgressComponent>(parameters = {
+						parametersOf(context, onMain, onDetailsProgress)
+					})
+				}
 			)
 		}
 
