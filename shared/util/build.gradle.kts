@@ -21,35 +21,27 @@ kotlin {
 		iosSimulatorArm64()
 	).forEach { iosTarget ->
 		iosTarget.binaries.framework {
-			baseName = "shared_training"
+			baseName = "shared_util"
 			isStatic = true
 		}
 	}
 
 	sourceSets {
 
-		androidMain.dependencies {}
-		commonMain.dependencies {
-			implementation(libs.koin.core)
-			implementation(libs.kotlinx.datetime)
-			implementation(libs.kotlinx.serialization.json)
-			implementation(libs.parcelable)
+		androidMain.dependencies {
 
-			implementation(libs.ktor.client.core)
-			implementation(libs.ktor.client.mock)
-			implementation(libs.ktor.client.content.negotiation)
-
-			implementation(project(":shared:util"))
 		}
+		commonMain.dependencies {
 
+		}
 		iosMain.dependencies {
-			implementation(libs.ktor.client.darwin)
+
 		}
 	}
 }
 
 android {
-	namespace = "ru.fit.app.shared.training"
+	namespace = "ru.fit.app.shared.util"
 	compileSdk = libs.versions.android.compileSdk.get().toInt()
 
 	defaultConfig {

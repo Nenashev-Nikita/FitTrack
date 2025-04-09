@@ -43,6 +43,7 @@ include(":feature:selection")
 
 //shared
 include(":shared:training")
+include(":shared:util")
 
 //design
 include(":design:theme")
