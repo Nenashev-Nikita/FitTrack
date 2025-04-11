@@ -3,7 +3,6 @@ package ru.fit.app.features.progress.list.ui
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -18,28 +17,26 @@ import ru.fit.app.features.progress.list.presentation.State
 fun ScreenListProgress(component: ListProgressComponent) {
 	val screenState by component.screenState.collectAsState()
 
-	MaterialTheme {
-		Column(
-			modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally
-		) {
-			when (val state = screenState) {
-				State.Initial    -> {
-					LaunchedEffect(Unit) {
-						component.loadContent()
-					}
+	Column(
+		modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally
+	) {
+		when (val state = screenState) {
+			State.Initial    -> {
+				LaunchedEffect(Unit) {
+					component.loadContent()
 				}
+			}
 
-				State.Error      -> Text("Error")
+			State.Error      -> Text("Error")
 
-				State.Loading    -> CircularProgressIndicator()
+			State.Loading    -> CircularProgressIndicator()
 
-				is State.Content -> {
-					Content(
-						exercises = state.exercises,
-						onWorkoutSelected = component::navigationDetails,
-						onBack = component::navigationBack,
-					)
-				}
+			is State.Content -> {
+				Content(
+					exercises = state.exercises,
+					onWorkoutSelected = component::navigationDetails,
+					onBack = component::navigationBack,
+				)
 			}
 		}
 	}

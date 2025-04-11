@@ -1,6 +1,5 @@
 package ru.fit.app.tabs
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.consumeWindowInsets
@@ -8,12 +7,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.material.BottomNavigation
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FitnessCenter
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.material.primarySurface
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -64,7 +61,6 @@ private fun BottomBar(component: TabsComponent, modifier: Modifier = Modifier) {
 	BottomNavigation(
 		modifier = modifier
 			.fillMaxWidth()
-			.background(MaterialTheme.colors.primarySurface)
 			.navigationBarsPadding(),
 		elevation = 0.dp,
 	) {

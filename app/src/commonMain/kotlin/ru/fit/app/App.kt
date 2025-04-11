@@ -1,7 +1,7 @@
 package ru.fit.app
 
+import FitTheme
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -19,7 +19,7 @@ import ru.fit.app.tabs.TabsContent
 
 @Composable
 fun App(component: RootComponent, modifier: Modifier = Modifier) {
-	MaterialTheme {
+	FitTheme {
 		Children(
 			component = component,
 			modifier = modifier,

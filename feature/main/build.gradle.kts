@@ -35,6 +35,7 @@ kotlin {
             implementation(project(":design:component"))
 
             implementation(project(":shared:training"))
+            implementation(project(":shared:util"))
 
             implementation(project(":core:presentation"))
 
@@ -48,6 +49,7 @@ kotlin {
             implementation(libs.koin.compose.viewmodel)
 
             implementation(libs.decompose.core)
+            implementation(libs.kotlinx.datetime)
         }
     }
 }
