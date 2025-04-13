@@ -31,13 +31,13 @@ kotlin {
             implementation(libs.ktor.client.android)
         }
         commonMain.dependencies {
-            implementation(libs.kotlinx.serialization.json)
+			api(libs.kotlinx.serialization.json)
 
-            implementation(libs.ktor.client.core)
-            implementation(libs.ktor.client.mock)
-            implementation(libs.ktor.client.content.negotiation)
+			api(libs.ktor.client.core)
+			api(libs.ktor.client.mock)
+			api(libs.ktor.client.content.negotiation)
 
-            implementation(project(":shared:util"))
+			api(project(":shared:util"))
         }
 
         iosMain.dependencies {

@@ -21,9 +21,9 @@ import com.arkivanov.decompose.extensions.compose.stack.Children
 import com.arkivanov.decompose.extensions.compose.stack.animation.fade
 import com.arkivanov.decompose.extensions.compose.stack.animation.stackAnimation
 import com.arkivanov.decompose.extensions.compose.subscribeAsState
-import ru.fit.app.features.main.ui.ScreenExercise
-import ru.fit.app.features.main.ui.ScreenMain
-import ru.fit.app.features.main.ui.ScreenProgram
+import ru.fit.app.features.exercise.details.ui.ScreenExercise
+import ru.fit.app.features.exercise.ui.ScreenMain
+import ru.fit.app.features.exercise.ui.ScreenProgram
 
 @Composable
 internal fun TabsContent(

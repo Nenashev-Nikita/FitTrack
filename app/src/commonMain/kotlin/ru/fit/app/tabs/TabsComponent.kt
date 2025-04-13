@@ -7,9 +7,9 @@ import com.arkivanov.decompose.router.stack.bringToFront
 import com.arkivanov.decompose.router.stack.childStack
 import com.arkivanov.decompose.value.Value
 import kotlinx.serialization.Serializable
-import ru.fit.app.features.main.presentation.ExerciseComponent
-import ru.fit.app.features.main.presentation.MainComponent
-import ru.fit.app.features.main.presentation.ProgramComponent
+import ru.fit.app.features.exercise.details.presentation.ExerciseComponent
+import ru.fit.app.features.exercise.presentation.MainComponent
+import ru.fit.app.features.exercise.presentation.ProgramComponent
 import ru.fit.app.utils.Url
 import ru.fit.app.utils.consumePathSegment
 import ru.fit.app.utils.pathSegmentOf
@@ -18,6 +18,8 @@ class TabsComponent(
 	componentContext: ComponentContext,
 	deepLinkUrl: Url?,
 	private val mainComponentFactory: () -> MainComponent,
+	private val exerciseComponentFactory: () -> ExerciseComponent,
+	private val programComponentFactory: () -> ProgramComponent,
 ) : ComponentContext by componentContext {
 
 	private val navigation = StackNavigation<Config>()
@@ -50,18 +52,10 @@ class TabsComponent(
 				Child.Main(mainComponentFactory())
 
 			is Config.Program  ->
-				Child.Program(
-					ProgramComponent(
-						componentContext = componentContext,
-					)
-				)
+				Child.Program(programComponentFactory())
 
 			is Config.Exercise ->
-				Child.Exercise(
-					ExerciseComponent(
-						componentContext = componentContext,
-					)
-				)
+				Child.Exercise(exerciseComponentFactory())
 		}
 
 	private fun getInitialConfig(deepLinkUrl: Url?): Config {

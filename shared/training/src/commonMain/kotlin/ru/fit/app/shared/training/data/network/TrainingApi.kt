@@ -15,10 +15,14 @@ class TrainingApi {
 		parseData()
 
 	private suspend fun parseData(): List<TrainingModule> {
+		val json = Json {
+			explicitNulls = false
+			coerceInputValues = true
+		}
 		delay(500)
 		val sharedFileReader = SharedFileReader()
 
 		val jsonString = sharedFileReader.loadJsonFile("trainings.json") ?: ""
-		return Json.decodeFromString(jsonString)
+		return json.decodeFromString(jsonString)
 	}
 }

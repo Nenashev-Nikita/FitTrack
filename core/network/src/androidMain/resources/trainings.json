@@ -7,149 +7,106 @@
       {
         "id": 1,
         "name": "Приседания со штангой",
+        "type": "STRENGTH",
+        "targetMuscles": [
+          "Квадрицепсы",
+          "Ягодицы"
+        ],
+        "equipment": "BARBELL",
         "stepByStepDescription": [
           "Возьмите штангу на плечи",
           "Спину держите прямо",
-          "Медленно присядьте до параллели с полом",
-          "Вернитесь в исходное положение"
+          "Медленно присядьте до параллели с полом"
         ],
         "img": "squats.jpg",
-        "approaches": [
-          {
-            "weight": 60,
-            "repetitions": 10
-          },
-          {
-            "weight": 70,
-            "repetitions": 8
+        "difficulty": "INTERMEDIATE",
+        "parameters": {
+          "approaches": [
+            {
+              "sets": 3,
+              "reps": 10,
+              "weightRange": 60.0
+            },
+            {
+              "sets": 4,
+              "reps": 8,
+              "weightRange": 70.0
+            }
+          ],
+          "tempo": {
+            "eccentric": 2,
+            "pause": 1,
+            "concentric": 1,
+            "rest": 0
           }
-        ]
+        }
       }
     ]
   },
   {
     "id": 2,
-    "name": "Тренировка груди и трицепса",
+    "name": "Кардио тренировка",
     "date": "2025-04-08T18:30:00Z",
     "exercise": [
       {
         "id": 2,
-        "name": "Жим штанги лежа",
-        "stepByStepDescription": [
-          "Лягте на скамью",
-          "Возьмите штангу широким хватом",
-          "Опустите штангу к груди",
-          "Выжмите вверх"
+        "name": "Беговая дорожка",
+        "type": "CARDIO",
+        "targetMuscles": [
+          "Ноги",
+          "Сердце"
         ],
-        "img": "bench_press.jpg",
-        "approaches": [
-          {
-            "weight": 80,
-            "repetitions": 8
-          },
-          {
-            "weight": 90,
-            "repetitions": 6
-          }
-        ]
+        "equipment": "MACHINE",
+        "stepByStepDescription": [
+          "Разминка 5 минут",
+          "Интервальный бег 20 минут"
+        ],
+        "img": "treadmill.jpg",
+        "difficulty": "BEGINNER",
+        "parameters": {
+          "approaches": [
+            {
+              "sets": 1,
+              "reps": null,
+              "weightRange": null
+            }
+          ],
+          "duration": 1500
+        }
       }
     ]
   },
   {
     "id": 3,
-    "name": "Кардио тренировка",
-    "date": "2025-04-09T17:00:00Z",
+    "name": "Йога",
+    "date": "2025-04-09T08:00:00Z",
     "exercise": [
       {
         "id": 3,
-        "name": "Беговая дорожка",
-        "stepByStepDescription": [
-          "Разминка 5 минут",
-          "Интервальный бег 20 минут",
-          "Заминка 5 минут"
+        "name": "Комплекс утренней йоги",
+        "type": "FLEXIBILITY",
+        "targetMuscles": [
+          "Все тело"
         ],
-        "img": "treadmill.jpg",
-        "approaches": [
-          {
-            "weight": 0,
-            "repetitions": 1
+        "equipment": "BODYWEIGHT",
+        "stepByStepDescription": null,
+        "img": null,
+        "difficulty": null,
+        "parameters": {
+          "approaches": [
+            {
+              "sets": 2,
+              "reps": 15,
+              "weightRange": null
+            }
+          ],
+          "tempo": {
+            "eccentric": 3,
+            "pause": 2,
+            "concentric": 2,
+            "rest": 1
           }
-        ]
-      }
-    ]
-  },
-  {
-    "id": 4,
-    "name": "Тренировка спины",
-    "date": "2025-04-10T10:00:00Z",
-    "exercise": [
-      {
-        "id": 4,
-        "name": "Тяга штанги в наклоне",
-        "stepByStepDescription": [
-          "Возьмите штангу прямым хватом",
-          "Наклоните корпус вперед",
-          "Подтяните штангу к поясу",
-          "Опустите в исходное положение"
-        ],
-        "img": "barbell_row.jpg",
-        "approaches": [
-          {
-            "weight": 50,
-            "repetitions": 12
-          },
-          {
-            "weight": 60,
-            "repetitions": 10
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": 5,
-    "name": "Кроссфит",
-    "date": "2025-04-11T19:00:00Z",
-    "exercise": [
-      {
-        "id": 5,
-        "name": "Комплекс AMRAP",
-        "stepByStepDescription": [
-          "10 бурпи",
-          "20 приседаний",
-          "30 скручиваний"
-        ],
-        "img": "crossfit.jpg",
-        "approaches": [
-          {
-            "weight": 0,
-            "repetitions": 5
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": 6,
-    "name": "Йога",
-    "date": "2025-04-12T08:00:00Z",
-    "exercise": [
-      {
-        "id": 6,
-        "name": "Утренний комплекс",
-        "stepByStepDescription": [
-          "Приветствие солнцу",
-          "Поза воина",
-          "Поза дерева",
-          "Шавасана"
-        ],
-        "img": "yoga.jpg",
-        "approaches": [
-          {
-            "weight": 0,
-            "repetitions": 1
-          }
-        ]
+        }
       }
     ]
   }

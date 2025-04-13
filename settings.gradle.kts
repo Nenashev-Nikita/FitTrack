@@ -32,7 +32,8 @@ include(":app")
 
 //features
 include(":feature:main")
-include(":feature:exercise")
+include(":feature:exercise:details")
+include(":feature:exercise:list")
 include(":feature:program")
 include(":feature:workout")
 include(":feature:profile")
@@ -45,6 +46,7 @@ include(":feature:selection")
 include(":shared:training")
 include(":shared:util")
 include(":shared:profile")
+include(":shared:exercise")
 
 //design
 include(":design:theme")

@@ -61,7 +61,8 @@ kotlin {
 			implementation(libs.kotlinx.serialization.core)
 
 			implementation(project(":feature:main"))
-			implementation(project(":feature:exercise"))
+			implementation(project(":feature:exercise:details"))
+			implementation(project(":feature:exercise:list"))
 			implementation(project(":feature:program"))
 			implementation(project(":feature:workout"))
 			implementation(project(":feature:profile"))
@@ -72,6 +73,7 @@ kotlin {
 
 			implementation(project(":shared:training"))
 			implementation(project(":shared:profile"))
+			implementation(project(":shared:exercise"))
 
 			implementation(project(":design:theme"))
 			implementation(project(":design:resources"))

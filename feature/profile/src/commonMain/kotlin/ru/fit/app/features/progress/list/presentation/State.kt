@@ -1,6 +1,6 @@
 package ru.fit.app.features.progress.list.presentation
 
-import ru.fit.app.shared.training.domain.entity.Exercise
+import ru.fit.app.shared.exercise.domain.entity.Exercise
 
 sealed interface State {
 

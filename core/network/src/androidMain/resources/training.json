@@ -1,0 +1,44 @@
+{
+  "id": 1,
+  "name": "Силовая тренировка ног",
+  "date": "2025-04-07T09:00:00Z",
+  "exercise": [
+    {
+      "id": 1,
+      "name": "Приседания со штангой",
+      "type": "STRENGTH",
+      "targetMuscles": [
+        "Квадрицепсы",
+        "Ягодицы"
+      ],
+      "equipment": "BARBELL",
+      "stepByStepDescription": [
+        "Возьмите штангу на плечи",
+        "Спину держите прямо",
+        "Медленно присядьте до параллели с полом"
+      ],
+      "img": "squats.jpg",
+      "difficulty": "INTERMEDIATE",
+      "parameters": {
+        "approaches": [
+          {
+            "sets": 3,
+            "reps": 10,
+            "weightRange": 60.0
+          },
+          {
+            "sets": 4,
+            "reps": 8,
+            "weightRange": 70.0
+          }
+        ],
+        "tempo": {
+          "eccentric": 2,
+          "pause": 1,
+          "concentric": 1,
+          "rest": 0
+        }
+      }
+    }
+  ]
+}

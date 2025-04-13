@@ -2,7 +2,9 @@ package ru.fit.app.di
 
 import org.koin.core.parameter.parametersOf
 import org.koin.dsl.module
-import ru.fit.app.features.main.presentation.MainComponent
+import ru.fit.app.features.exercise.details.presentation.ExerciseComponent
+import ru.fit.app.features.exercise.presentation.MainComponent
+import ru.fit.app.features.exercise.presentation.ProgramComponent
 import ru.fit.app.features.profile.presentation.ProfileComponent
 import ru.fit.app.features.progress.details.presentation.DetailsProgressComponent
 import ru.fit.app.features.progress.list.presentation.ListProgressComponent
@@ -39,7 +41,21 @@ val FactoryComponentModule = module {
 				get<ListProgressComponent>(parameters = {
 					parametersOf(context, onMain, onDetailsProgress)
 				})
-			}
+			},
+			exerciseComponentFactory = { context ->
+				get<ExerciseComponent>(
+					parameters = {
+						parametersOf(context)
+					}
+				)
+			},
+			programComponentFactory = { context ->
+				get<ProgramComponent>(
+					parameters = {
+						parametersOf(context)
+					}
+				)
+			},
 		)
 	}
 }

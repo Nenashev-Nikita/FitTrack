@@ -1,7 +1,9 @@
 package ru.fit.app.presentation
 
 import com.arkivanov.decompose.ComponentContext
-import ru.fit.app.features.main.presentation.MainComponent
+import ru.fit.app.features.exercise.details.presentation.ExerciseComponent
+import ru.fit.app.features.exercise.presentation.MainComponent
+import ru.fit.app.features.exercise.presentation.ProgramComponent
 import ru.fit.app.features.profile.presentation.ProfileComponent
 import ru.fit.app.features.progress.details.presentation.DetailsProgressComponent
 import ru.fit.app.features.progress.list.presentation.ListProgressComponent
@@ -13,6 +15,8 @@ class FactoryComponent(
 	private val profileComponentFactory: (ComponentContext, () -> Unit, () -> Unit) -> ProfileComponent,
 	private val detailsProgressComponentFactory: (ComponentContext, () -> Unit) -> DetailsProgressComponent,
 	private val listProgressComponentFactory: (ComponentContext, (Int) -> Unit, () -> Unit) -> ListProgressComponent,
+	private val exerciseComponentFactory: (ComponentContext) -> ExerciseComponent,
+	private val programComponentFactory: (ComponentContext) -> ProgramComponent,
 ) {
 
 	fun main(
@@ -47,4 +51,14 @@ class FactoryComponent(
 		onBack: () -> Unit,
 	): ListProgressComponent =
 		listProgressComponentFactory(componentContext, onDetailsProgress, onBack)
+
+	fun exercise(
+		componentContext: ComponentContext,
+	): ExerciseComponent =
+		exerciseComponentFactory(componentContext)
+
+	fun program(
+		componentContext: ComponentContext,
+	): ProgramComponent =
+		programComponentFactory(componentContext)
 }

@@ -42,7 +42,8 @@ kotlin {
 			implementation(libs.ktor.client.content.negotiation)
 
 			implementation(project(":shared:util"))
-			
+			implementation(project(":shared:exercise"))
+
 			implementation(project(":core:network"))
 		}
 

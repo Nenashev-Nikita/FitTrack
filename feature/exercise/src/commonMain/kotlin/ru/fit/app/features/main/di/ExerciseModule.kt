@@ -1,1 +1,0 @@
-package ru.fit.app.features.main.diimport com.arkivanov.decompose.ComponentContextimport org.koin.dsl.moduleimport ru.fit.app.features.main.presentation.ExerciseComponentval ExerciseModule = module {	factory { (componentContext: ComponentContext) ->		ExerciseComponent(			componentContext = componentContext,		)	}}

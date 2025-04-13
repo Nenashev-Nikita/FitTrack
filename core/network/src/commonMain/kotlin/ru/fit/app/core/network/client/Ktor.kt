@@ -13,12 +13,13 @@ import ru.fit.app.shared.util.file.SharedFileReader
 
 object Ktor {
 
-	private val json = Json {
+	val json = Json {
 		ignoreUnknownKeys = true
 		explicitNulls = false
+		coerceInputValues = true
 	}
 	private val responseHeaders = headersOf("Content-Type" to listOf(ContentType.Application.Json.toString()))
-	private val sharedFileReader = SharedFileReader()
+	val sharedFileReader = SharedFileReader()
 
 	val client = HttpClient(MockEngine) {
 		install(ContentNegotiation) {

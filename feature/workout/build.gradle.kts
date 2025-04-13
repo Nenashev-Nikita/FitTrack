@@ -41,6 +41,8 @@ kotlin {
 			implementation(libs.kotlinx.datetime)
 
 			implementation(project(":shared:training"))
+			implementation(project(":shared:exercise"))
+			implementation(project(":core:network"))
 		}
 	}
 }

@@ -18,14 +18,18 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.DirectionsRun
+import androidx.compose.material.icons.filled.Cake
 import androidx.compose.material.icons.filled.CheckCircle
-import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.FitnessCenter
+import androidx.compose.material.icons.filled.Height
+import androidx.compose.material.icons.filled.MonitorWeight
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Phone
-import androidx.compose.material.icons.filled.PlayArrow
-import androidx.compose.material.icons.filled.ShoppingCart
-import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.icons.filled.SelfImprovement
+import androidx.compose.material.icons.filled.Sms
+import androidx.compose.material.icons.filled.Sports
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -33,6 +37,8 @@ import androidx.compose.material3.FilterChip
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Switch
+import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -41,6 +47,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 import ru.fit.app.shared.profile.domain.entity.ActivityLevel
+import ru.fit.app.shared.profile.domain.entity.NotificationSettings
 import ru.fit.app.shared.profile.domain.entity.UserProfile
 import ru.fit.app.shared.profile.domain.entity.WorkoutType
 
@@ -48,17 +55,23 @@ import ru.fit.app.shared.profile.domain.entity.WorkoutType
 fun Content(
 	userProfile: UserProfile,
 	modifier: Modifier = Modifier,
+	onProgressClick: () -> Unit,
 ) {
 	Column(
 		modifier = modifier
 			.verticalScroll(rememberScrollState())
 	) {
+
+		Button(onClick = { onProgressClick() }) {
+			Text("Progress")
+		}
+
 		ProfileHeader(userProfile)
 		PhysicalParams(userProfile)
-		ActivitySection(userProfile)
 		GoalsSection(userProfile)
-//			NotificationSettings(userProfile.notificationSettings)
-//			SocialMediaLinks(userProfile.socialMediaLinks)
+		ActivitySection(userProfile)
+		NotificationSettings(userProfile.notificationSettings)
+//		SocialMediaLinks(userProfile.socialMediaLinks)
 	}
 }
 
@@ -145,14 +158,14 @@ private fun PhysicalParams(user: UserProfile) {
 		modifier = Modifier.padding(16.dp),
 		horizontalArrangement = Arrangement.spacedBy(16.dp)
 	) {
-		item { ParamCard("Рост", user.height?.toString() ?: "-", Icons.Default.Email) }
-		item { ParamCard("Вес", user.weight?.toString() ?: "-", Icons.Default.Phone) }
+		item { ParamCard("Рост", user.height?.toString() ?: "-", Icons.Default.Height) }
+		item { ParamCard("Вес", user.weight?.toString() ?: "-", Icons.Default.MonitorWeight) }
 		item {
 			ParamCard(
 				title = "Возраст",
 //				value = user.birthDate?.let { 23 }?.toString() ?: "-",
 				value = "23",
-				icon = Icons.Default.ShoppingCart
+				icon = Icons.Default.Cake
 			)
 		}
 	}
@@ -220,10 +233,10 @@ private fun ActivitySection(user: UserProfile) {
 						leadingIcon = {
 							Icon(
 								when (type) {
-									WorkoutType.STRENGTH_TRAINING -> Icons.Default.Notifications
-									WorkoutType.CARDIO            -> Icons.Default.Delete
-									WorkoutType.YOGA              -> Icons.Default.PlayArrow
-									else                          -> Icons.Default.Star
+									WorkoutType.STRENGTH_TRAINING -> Icons.Default.FitnessCenter
+									WorkoutType.CARDIO            -> Icons.AutoMirrored.Filled.DirectionsRun
+									WorkoutType.YOGA              -> Icons.Default.SelfImprovement
+									else                          -> Icons.Default.Sports
 								},
 								contentDescription = null
 							)
@@ -274,3 +287,136 @@ private fun GoalsSection(user: UserProfile) {
 		}
 	}
 }
+
+@Composable
+private fun NotificationSettings(settings: NotificationSettings) {
+	Card(
+		modifier = Modifier
+			.fillMaxWidth()
+			.padding(16.dp),
+		elevation = CardDefaults.cardElevation(4.dp)
+	) {
+		Column(modifier = Modifier.padding(16.dp)) {
+			Text("Настройки уведомлений", style = MaterialTheme.typography.titleLarge)
+
+			Spacer(modifier = Modifier.height(8.dp))
+
+			NotificationSettingItem(
+				label = "Email-уведомления",
+				enabled = settings.emailNotifications,
+				icon = Icons.Default.Email
+			)
+			NotificationSettingItem(
+				label = "Push-уведомления",
+				enabled = settings.pushNotifications,
+				icon = Icons.Default.Notifications
+			)
+			NotificationSettingItem(
+				label = "SMS-уведомления",
+				enabled = settings.newFeatures,
+				icon = Icons.Default.Sms
+			)
+		}
+	}
+}
+
+@Composable
+private fun NotificationSettingItem(label: String, enabled: Boolean, icon: ImageVector) {
+	Row(
+		verticalAlignment = Alignment.CenterVertically,
+		modifier = Modifier
+			.fillMaxWidth()
+			.padding(vertical = 8.dp)
+	) {
+		Icon(
+			icon,
+			contentDescription = label,
+			tint = MaterialTheme.colorScheme.primary
+		)
+		Spacer(modifier = Modifier.width(16.dp))
+		Text(
+			text = label,
+			style = MaterialTheme.typography.bodyLarge,
+			modifier = Modifier.weight(1f)
+		)
+		Switch(
+			checked = enabled,
+			onCheckedChange = null,
+			enabled = false,
+			colors = SwitchDefaults.colors(
+				checkedThumbColor = MaterialTheme.colorScheme.primary,
+				checkedTrackColor = MaterialTheme.colorScheme.primaryContainer
+			)
+		)
+	}
+}
+/*
+
+@Composable
+private fun SocialMediaLinks(links: List<SocialMediaLink>) {
+	Card(
+		modifier = Modifier
+			.fillMaxWidth()
+			.padding(16.dp),
+		elevation = CardDefaults.cardElevation(4.dp)
+	) {
+		Column(modifier = Modifier.padding(16.dp)) {
+			Text("Социальные сети", style = MaterialTheme.typography.titleLarge)
+
+			Spacer(modifier = Modifier.height(8.dp))
+
+			links.forEach { link ->
+				SocialMediaLinkItem(
+					type = link.type,
+					url = link.url,
+					modifier = Modifier.padding(vertical = 8.dp)
+				)
+			}
+		}
+	}
+}
+
+@Composable
+private fun SocialMediaLinkItem(type: UserProfile.SocialMediaType, url: String, modifier: Modifier = Modifier) {
+	val context = LocalContext.current
+	val icon = when (type) {
+		UserProfile.SocialMediaType.INSTAGRAM -> Icons.Default.Person
+		UserProfile.SocialMediaType.FACEBOOK -> Icons.Default.Facebook
+		UserProfile.SocialMediaType.TWITTER -> Icons.Default.Public
+		UserProfile.SocialMediaType.LINKEDIN -> Icons.Default.Work
+		else -> Icons.Default.Link
+	}
+
+	Row(
+		verticalAlignment = Alignment.CenterVertically,
+		modifier = modifier
+			.fillMaxWidth()
+			.clickable {
+				try {
+					context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
+				} catch (e: Exception) {
+					Toast.makeText(context, "Невозможно открыть ссылку", Toast.LENGTH_SHORT).show()
+				}
+			}
+			.padding(8.dp)
+	) {
+		Icon(
+			icon,
+			contentDescription = type.name,
+			tint = MaterialTheme.colorScheme.primary
+		)
+		Spacer(modifier = Modifier.width(16.dp))
+		Text(
+			text = when (type) {
+				UserProfile.SocialMediaType.INSTAGRAM -> "Instagram"
+				UserProfile.SocialMediaType.FACEBOOK -> "Facebook"
+				UserProfile.SocialMediaType.TWITTER -> "Twitter"
+				UserProfile.SocialMediaType.LINKEDIN -> "LinkedIn"
+				else -> "Другая сеть"
+			},
+			style = MaterialTheme.typography.bodyLarge,
+			color = MaterialTheme.colorScheme.primary
+		)
+	}
+}
+*/

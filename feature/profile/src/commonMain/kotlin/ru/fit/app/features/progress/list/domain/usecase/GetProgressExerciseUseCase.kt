@@ -1,7 +1,7 @@
 package ru.fit.app.features.progress.list.domain.usecase
 
 import ru.fit.app.features.progress.list.domain.repository.ProgressExerciseRepository
-import ru.fit.app.shared.training.domain.entity.Exercise
+import ru.fit.app.shared.exercise.domain.entity.Exercise
 
 class GetProgressExerciseUseCase(
 	private val repository: ProgressExerciseRepository
