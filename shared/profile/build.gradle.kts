@@ -21,7 +21,7 @@ kotlin {
 		iosSimulatorArm64()
 	).forEach { iosTarget ->
 		iosTarget.binaries.framework {
-			baseName = "shared_util"
+			baseName = "shared_profile"
 			isStatic = true
 		}
 	}
@@ -29,21 +29,31 @@ kotlin {
 	sourceSets {
 
 		androidMain.dependencies {
-
+			implementation(libs.ktor.client.android)
 		}
 		commonMain.dependencies {
+			implementation(libs.koin.core)
 			implementation(libs.kotlinx.datetime)
 			implementation(libs.kotlinx.serialization.json)
-			implementation(libs.kotlinx.serialization.core)
-		}
-		iosMain.dependencies {
+			implementation(libs.parcelable)
 
+			implementation(libs.ktor.client.core)
+			implementation(libs.ktor.client.mock)
+			implementation(libs.ktor.client.content.negotiation)
+
+			implementation(project(":shared:util"))
+
+			implementation(project(":core:network"))
+		}
+
+		iosMain.dependencies {
+			implementation(libs.ktor.client.darwin)
 		}
 	}
 }
 
 android {
-	namespace = "ru.fit.app.shared.util"
+	namespace = "ru.fit.app.shared.profile"
 	compileSdk = libs.versions.android.compileSdk.get().toInt()
 
 	defaultConfig {

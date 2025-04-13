@@ -71,6 +71,7 @@ kotlin {
 //			implementation(project(":feature:selection"))
 
 			implementation(project(":shared:training"))
+			implementation(project(":shared:profile"))
 
 			implementation(project(":design:theme"))
 			implementation(project(":design:resources"))

@@ -18,6 +18,7 @@ import ru.fit.app.features.progress.details.di.DetailsProgressModule
 import ru.fit.app.features.progress.list.di.ListProgressModule
 import ru.fit.app.features.workout.di.WorkoutModule
 import ru.fit.app.presentation.RootComponent
+import ru.fit.app.shared.profile.di.UserProfileModule
 import ru.fit.app.shared.training.di.TrainingModule
 
 class MainActivity : ComponentActivity() {
@@ -34,6 +35,7 @@ class MainActivity : ComponentActivity() {
 			//Shared
 			modules(
 				TrainingModule,
+				UserProfileModule,
 			)
 			//Feature
 			modules(

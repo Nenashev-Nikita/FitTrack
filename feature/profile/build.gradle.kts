@@ -31,9 +31,10 @@ kotlin {
 		commonMain.dependencies {
 			implementation(project(":design:component"))
 			implementation(project(":shared:training"))
+			implementation(project(":shared:profile"))
 			implementation(compose.runtime)
 			implementation(compose.foundation)
-			implementation(compose.material)
+			implementation(compose.material3)
 			implementation(libs.compose.material3)
 
 			implementation(libs.koin.core)

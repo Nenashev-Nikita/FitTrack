@@ -10,7 +10,7 @@ import com.arkivanov.decompose.extensions.compose.stack.Children
 import com.arkivanov.decompose.extensions.compose.stack.animation.fade
 import com.arkivanov.decompose.extensions.compose.stack.animation.predictiveback.predictiveBackAnimation
 import com.arkivanov.decompose.extensions.compose.stack.animation.stackAnimation
-import ru.fit.app.features.profile.ui.ScreenProfile
+import ru.fit.app.features.profile.ui.ProfileScreen
 import ru.fit.app.features.progress.details.ui.ScreenDetailsProgress
 import ru.fit.app.features.progress.list.ui.ScreenListProgress
 import ru.fit.app.features.workout.ui.ScreenWorkout
@@ -45,7 +45,7 @@ private fun Children(component: RootComponent, modifier: Modifier = Modifier) {
 
 				is RootComponent.Child.TabsChild       -> TabsContent(child.component)
 
-				is RootComponent.Child.Profile         -> ScreenProfile(child.component)
+				is RootComponent.Child.Profile -> ProfileScreen(child.component)
 
 				is RootComponent.Child.DetailsProgress -> ScreenDetailsProgress(child.component)
 

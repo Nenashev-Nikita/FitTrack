@@ -44,6 +44,7 @@ include(":feature:selection")
 //shared
 include(":shared:training")
 include(":shared:util")
+include(":shared:profile")
 
 //design
 include(":design:theme")
