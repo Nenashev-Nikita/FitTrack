@@ -1,0 +1,1 @@
+package ru.fit.app.features.selection.diimport com.arkivanov.decompose.ComponentContextimport org.koin.dsl.moduleimport ru.fit.app.features.selection.presentation.SelectionComponentval SelectionModule = module {	factory { (componentContext: ComponentContext) ->		SelectionComponent(			componentContext = componentContext,		)	}}

@@ -7,11 +7,11 @@ import ru.fit.app.features.exercise.presentation.ProgramComponent
 import ru.fit.app.features.profile.presentation.ProfileComponent
 import ru.fit.app.features.progress.details.presentation.DetailsProgressComponent
 import ru.fit.app.features.progress.list.presentation.ListProgressComponent
-import ru.fit.app.features.workout.presentation.WorkoutComponent
+import ru.fit.app.features.shared.presentation.FeatureWorkoutComponent
 
 class FactoryComponent(
 	private val mainComponentFactory: (ComponentContext, (Int) -> Unit, () -> Unit) -> MainComponent,
-	private val workoutComponentFactory: (ComponentContext, Int) -> WorkoutComponent,
+	private val featureWorkoutComponent: (ComponentContext, Int) -> FeatureWorkoutComponent,
 	private val profileComponentFactory: (ComponentContext, () -> Unit, () -> Unit) -> ProfileComponent,
 	private val detailsProgressComponentFactory: (ComponentContext, () -> Unit) -> DetailsProgressComponent,
 	private val listProgressComponentFactory: (ComponentContext, (Int) -> Unit, () -> Unit) -> ListProgressComponent,
@@ -28,9 +28,9 @@ class FactoryComponent(
 
 	fun workout(
 		componentContext: ComponentContext,
-		idExercise: Int
-	): WorkoutComponent =
-		workoutComponentFactory(componentContext, idExercise)
+		idWorkout: Int,
+	): FeatureWorkoutComponent =
+		featureWorkoutComponent(componentContext, idWorkout)
 
 	fun profile(
 		componentContext: ComponentContext,

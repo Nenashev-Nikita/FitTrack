@@ -8,7 +8,7 @@ import ru.fit.app.features.exercise.presentation.ProgramComponent
 import ru.fit.app.features.profile.presentation.ProfileComponent
 import ru.fit.app.features.progress.details.presentation.DetailsProgressComponent
 import ru.fit.app.features.progress.list.presentation.ListProgressComponent
-import ru.fit.app.features.workout.presentation.WorkoutComponent
+import ru.fit.app.features.shared.presentation.FeatureWorkoutComponent
 import ru.fit.app.presentation.FactoryComponent
 
 val FactoryComponentModule = module {
@@ -20,8 +20,8 @@ val FactoryComponentModule = module {
 					parametersOf(context, onWorkoutSelected, onProfileSelected)
 				})
 			},
-			workoutComponentFactory = { context, id ->
-				get<WorkoutComponent>(parameters = {
+			featureWorkoutComponent = { context, id ->
+				get<FeatureWorkoutComponent>(parameters = {
 					parametersOf(context, id)
 				})
 			},

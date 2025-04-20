@@ -1,0 +1,1 @@
+package ru.fit.app.features.details.diimport com.arkivanov.decompose.ComponentContextimport org.koin.dsl.moduleimport ru.fit.app.features.details.presentation.DetailsComponentval DetailsModule = module {	factory { (componentContext: ComponentContext, id: Int) ->		DetailsComponent(			componentContext = componentContext,			getWorkoutUseCase = get(),			id = id		)	}}

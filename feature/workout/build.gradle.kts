@@ -5,6 +5,7 @@ plugins {
 	alias(libs.plugins.androidLibrary)
 	alias(libs.plugins.composeMultiplatform)
 	alias(libs.plugins.composeCompiler)
+	alias(libs.plugins.kotlinSerialization)
 }
 
 kotlin {
@@ -37,6 +38,7 @@ kotlin {
 			implementation(libs.koin.compose.viewmodel)
 
 			implementation(libs.decompose.core)
+			implementation(libs.decompose.extensions.compose)
 
 			implementation(libs.kotlinx.datetime)
 

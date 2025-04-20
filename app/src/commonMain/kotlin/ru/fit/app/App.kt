@@ -13,7 +13,7 @@ import com.arkivanov.decompose.extensions.compose.stack.animation.stackAnimation
 import ru.fit.app.features.profile.ui.ProfileScreen
 import ru.fit.app.features.progress.details.ui.ScreenDetailsProgress
 import ru.fit.app.features.progress.list.ui.ScreenListProgress
-import ru.fit.app.features.workout.ui.ScreenWorkout
+import ru.fit.app.features.shared.ui.ScreenFeatureWorkout
 import ru.fit.app.presentation.RootComponent
 import ru.fit.app.tabs.TabsContent
 
@@ -41,7 +41,7 @@ private fun Children(component: RootComponent, modifier: Modifier = Modifier) {
 	) {
 		Surface(modifier = Modifier.fillMaxSize()) {
 			when (val child = it.instance) {
-				is RootComponent.Child.Workout         -> ScreenWorkout(child.component)
+				is RootComponent.Child.Workout -> ScreenFeatureWorkout(child.component)
 
 				is RootComponent.Child.TabsChild       -> TabsContent(child.component)
 

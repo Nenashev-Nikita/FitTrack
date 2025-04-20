@@ -10,12 +10,15 @@ import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
 import ru.fit.app.di.FactoryComponentModule
 import ru.fit.app.di.RootModule
+import ru.fit.app.features.details.di.DetailsModule
 import ru.fit.app.features.exercise.details.di.ExerciseModule
 import ru.fit.app.features.exercise.di.MainModule
 import ru.fit.app.features.exercise.di.ProgramModule
 import ru.fit.app.features.profile.di.profileModule
 import ru.fit.app.features.progress.details.di.DetailsProgressModule
 import ru.fit.app.features.progress.list.di.ListProgressModule
+import ru.fit.app.features.selection.di.SelectionModule
+import ru.fit.app.features.shared.di.FeatureWorkoutComponentModule
 import ru.fit.app.features.workout.di.WorkoutModule
 import ru.fit.app.presentation.RootComponent
 import ru.fit.app.shared.exercise.di.ExerciseListModule
@@ -44,10 +47,13 @@ class MainActivity : ComponentActivity() {
 				MainModule,
 				ProgramModule,
 				ExerciseModule,
-				WorkoutModule,
 				profileModule,
 				ListProgressModule,
 				DetailsProgressModule,
+				FeatureWorkoutComponentModule,
+				WorkoutModule,
+				SelectionModule,
+				DetailsModule,
 			)
 		}
 
