@@ -10,6 +10,7 @@ import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
 import ru.fit.app.di.FactoryComponentModule
 import ru.fit.app.di.RootModule
+import ru.fit.app.di.navigationModule
 import ru.fit.app.features.details.di.DetailsModule
 import ru.fit.app.features.exercise.details.di.ExerciseModule
 import ru.fit.app.features.exercise.di.MainModule
@@ -35,6 +36,7 @@ class MainActivity : ComponentActivity() {
 			modules(
 				RootModule,
 				FactoryComponentModule,
+				navigationModule,
 			)
 			//Shared
 			modules(

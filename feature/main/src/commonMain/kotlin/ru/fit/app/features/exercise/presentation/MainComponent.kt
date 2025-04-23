@@ -16,8 +16,7 @@ import ru.fit.app.shared.training.domain.usecase.GetTrainingsUseCase
 class MainComponent(
 	componentContext: ComponentContext,
 	private val getTrainingsUseCase: GetTrainingsUseCase,
-	private val onWorkoutSelected: (Int) -> Unit,
-	private val onProfileSelected: () -> Unit,
+	private val mainNavigation: MainNavigation,
 ) : ComponentContext by componentContext {
 
 	private val coroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
@@ -49,10 +48,10 @@ class MainComponent(
 	}
 
 	fun navigationWorkout(id: Int) {
-		onWorkoutSelected(id)
+		mainNavigation.navigateToWorkout(id)
 	}
 
 	fun navigationProfile() {
-		onProfileSelected()
+		mainNavigation.navigateToProfile()
 	}
 }

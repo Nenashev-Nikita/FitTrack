@@ -3,6 +3,7 @@ package ru.fit.app.presentation
 import com.arkivanov.decompose.ComponentContext
 import ru.fit.app.features.exercise.details.presentation.ExerciseComponent
 import ru.fit.app.features.exercise.presentation.MainComponent
+import ru.fit.app.features.exercise.presentation.MainNavigation
 import ru.fit.app.features.exercise.presentation.ProgramComponent
 import ru.fit.app.features.profile.presentation.ProfileComponent
 import ru.fit.app.features.progress.details.presentation.DetailsProgressComponent
@@ -10,7 +11,7 @@ import ru.fit.app.features.progress.list.presentation.ListProgressComponent
 import ru.fit.app.features.shared.presentation.FeatureWorkoutComponent
 
 class FactoryComponent(
-	private val mainComponentFactory: (ComponentContext, (Int) -> Unit, () -> Unit) -> MainComponent,
+	private val mainComponentFactory: (ComponentContext, MainNavigation) -> MainComponent,
 	private val featureWorkoutComponent: (ComponentContext, Int) -> FeatureWorkoutComponent,
 	private val profileComponentFactory: (ComponentContext, () -> Unit, () -> Unit) -> ProfileComponent,
 	private val detailsProgressComponentFactory: (ComponentContext, () -> Unit) -> DetailsProgressComponent,
@@ -21,10 +22,9 @@ class FactoryComponent(
 
 	fun main(
 		componentContext: ComponentContext,
-		onWorkout: (Int) -> Unit,
-		onProfile: () -> Unit,
+		mainNavigation: MainNavigation,
 	): MainComponent =
-		mainComponentFactory(componentContext, onWorkout, onProfile)
+		mainComponentFactory(componentContext, mainNavigation)
 
 	fun workout(
 		componentContext: ComponentContext,

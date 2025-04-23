@@ -1,0 +1,1 @@
+package ru.fit.app.features.exercise.presentationinterface MainNavigation {	fun navigateToWorkout(id: Int)	fun navigateToProfile()}

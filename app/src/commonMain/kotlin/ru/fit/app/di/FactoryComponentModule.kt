@@ -15,9 +15,9 @@ val FactoryComponentModule = module {
 
 	factory {
 		FactoryComponent(
-			mainComponentFactory = { context, onWorkoutSelected, onProfileSelected ->
+			mainComponentFactory = { context, mainNavigation ->
 				get<MainComponent>(parameters = {
-					parametersOf(context, onWorkoutSelected, onProfileSelected)
+					parametersOf(context, mainNavigation)
 				})
 			},
 			featureWorkoutComponent = { context, id ->
