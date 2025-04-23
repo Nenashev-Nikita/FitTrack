@@ -23,8 +23,8 @@ class ComponentFactory(private val di: DI) {
 	fun main(args: MainComponentArgs): MainComponent =
 		di.invokeFactory(args)
 
-	fun profile(componentContext: ComponentContext, onBack: () -> Unit, onListProgress: () -> Unit): ProfileComponent =
-		di.invokeFactory(ProfileComponentArgs(componentContext, onBack, onListProgress))
+	fun profile(args: ProfileComponentArgs): ProfileComponent =
+		di.invokeFactory(args)
 
 	fun workout(componentContext: ComponentContext, idWorkout: Int): FeatureWorkoutComponent =
 		di.invokeFactory(FeatureWorkoutArgs(componentContext, idWorkout))

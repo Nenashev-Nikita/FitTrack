@@ -1,0 +1,1 @@
+package ru.fit.app.features.profile.presentationinterface ProfileNavigation {	fun navigationListProgress()	fun back()}

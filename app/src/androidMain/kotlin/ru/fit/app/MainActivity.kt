@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import com.arkivanov.decompose.retainedComponent
 import org.kodein.di.DI
+import ru.fit.app.di.NavigationModule
 import ru.fit.app.di.RootModule
 import ru.fit.app.features.details.di.DetailsModule
 import ru.fit.app.features.exercise.details.di.ExerciseModule
@@ -30,6 +31,7 @@ class MainActivity : ComponentActivity() {
 			importAll(
 				RootModule,
 				ExerciseModule,
+				NavigationModule,
 			)
 			importAll(
 				MainModule,

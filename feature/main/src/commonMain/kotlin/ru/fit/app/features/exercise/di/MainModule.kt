@@ -10,7 +10,7 @@ import ru.fit.app.features.exercise.presentation.MainNavigation
 
 data class MainComponentArgs(
 	val componentContext: ComponentContext,
-	val mainNavigation: MainNavigation
+	val navigation: MainNavigation
 )
 
 val MainModule = DI.Module("MainModule") {
@@ -18,7 +18,7 @@ val MainModule = DI.Module("MainModule") {
 	bind<MainComponent>() with factory { args: MainComponentArgs ->
 		MainComponent(
 			componentContext = args.componentContext,
-			mainNavigation = args.mainNavigation,
+			mainNavigation = args.navigation,
 			getTrainingsUseCase = instance()
 		)
 	}
