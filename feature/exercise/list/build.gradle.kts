@@ -38,9 +38,7 @@ kotlin {
 			implementation(libs.compose.material3)
 			implementation(compose.materialIconsExtended)
 
-			implementation(libs.koin.core)
-			implementation(libs.koin.compose)
-			implementation(libs.koin.compose.viewmodel)
+			implementation(libs.kodein.di)
 
 			implementation(libs.decompose.core)
 

@@ -30,10 +30,9 @@ kotlin {
 	sourceSets {
 
 		androidMain.dependencies {
+			implementation(libs.kodein.di.framework.android.x)
 			implementation(compose.preview)
 			implementation(libs.androidx.activity.compose)
-
-			implementation(libs.koin.android)
 
 			implementation(libs.kotlin.parcelize.runtime)
 		}
@@ -50,9 +49,7 @@ kotlin {
 
 			implementation(libs.compose.material3)
 
-			implementation(libs.koin.core)
-			implementation(libs.koin.compose)
-			implementation(libs.koin.compose.viewmodel)
+			implementation(libs.kodein.di)
 
 			implementation(libs.decompose.core)
 			implementation(libs.decompose.extensions.compose)

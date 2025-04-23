@@ -32,7 +32,8 @@ kotlin {
 			implementation(libs.ktor.client.android)
 		}
 		commonMain.dependencies {
-			implementation(libs.koin.core)
+			implementation(libs.kodein.di)
+
 			implementation(libs.kotlinx.datetime)
 			implementation(libs.kotlinx.serialization.json)
 			implementation(libs.parcelable)
