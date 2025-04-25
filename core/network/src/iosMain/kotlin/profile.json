@@ -1,0 +1,34 @@
+{
+  "userId": 1,
+  "username": "fit_user_123",
+  "firstName": "Иван",
+  "lastName": "Иванов",
+  "email": "ivan.ivanov@example.com",
+  "phone": "+7 (900) 123-45-67",
+  "avatarUrl": "https://example.com/avatars/ivan.jpg",
+  "birthDate": null,
+  "height": 180.5,
+  "weight": 75.2,
+  "fitnessGoals": [
+    "Увеличение мышечной массы",
+    "Улучшение выносливости"
+  ],
+  "activityLevel": "MODERATE",
+  "preferredWorkoutTypes": [
+    "STRENGTH_TRAINING",
+    "CARDIO"
+  ],
+  "registrationDate": "2024-01-15T08:30:00Z",
+  "notificationSettings": {
+    "workoutReminders": true,
+    "progressUpdates": true,
+    "newFeatures": false,
+    "emailNotifications": true,
+    "pushNotifications": true,
+    "notificationTime": "18:30"
+  },
+  "socialMediaLinks": {
+    "instagram": "https://instagram.com/ivan_fit",
+    "telegram": "https://t.me/ivan_fitness"
+  }
+}

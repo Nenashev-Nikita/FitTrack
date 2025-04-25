@@ -4,57 +4,16 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import com.arkivanov.decompose.retainedComponent
-import org.kodein.di.DI
-import ru.fit.app.di.NavigationModule
-import ru.fit.app.di.RootModule
-import ru.fit.app.features.details.di.DetailsModule
-import ru.fit.app.features.exercise.details.di.ExerciseModule
-import ru.fit.app.features.exercise.di.MainModule
-import ru.fit.app.features.exercise.di.ProgramModule
-import ru.fit.app.features.profile.di.ProfileModule
-import ru.fit.app.features.progress.details.di.DetailsProgressModule
-import ru.fit.app.features.progress.list.di.ListProgressModule
-import ru.fit.app.features.selection.di.SelectionModule
-import ru.fit.app.features.shared.di.FeatureWorkoutComponentModule
-import ru.fit.app.features.workout.di.WorkoutModule
-import ru.fit.app.presentation.ComponentFactory
 import ru.fit.app.presentation.RootComponent
-import ru.fit.app.shared.exercise.di.ExerciseListModule
-import ru.fit.app.shared.profile.di.UserProfileModule
-import ru.fit.app.shared.training.di.TrainingModule
 
 class MainActivity : ComponentActivity() {
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
-		val appDI = DI {
-			importAll(
-				RootModule,
-				ExerciseModule,
-				NavigationModule,
-			)
-			importAll(
-				MainModule,
-				ProfileModule,
-				DetailsProgressModule,
-				ListProgressModule,
-				ProgramModule,
-				DetailsModule,
-				SelectionModule,
-				FeatureWorkoutComponentModule,
-				WorkoutModule,
-			)
-			importAll(
-				TrainingModule,
-				ExerciseListModule,
-				UserProfileModule,
-			)
-		}
 
 		val root = retainedComponent {
 			RootComponent(
 				componentContext = it,
-				componentFactory = ComponentFactory(appDI)
 			)
 		}
 

@@ -1,0 +1,1 @@
+import androidx.compose.ui.window.ComposeUIViewControllerimport platform.UIKit.UIViewControllerimport com.arkivanov.decompose.retainedComponentimport ru.fit.app.presentation.RootComponentfun LaunchesViewController(root: RootComponent): UIViewController {    return ComposeUIViewController {        AppTheme {            App(root)        }    }}

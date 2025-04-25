@@ -1,0 +1,113 @@
+[
+  {
+    "id": 1,
+    "name": "Силовая тренировка ног",
+    "date": "2025-04-07T09:00:00Z",
+    "exercise": [
+      {
+        "id": 1,
+        "name": "Приседания со штангой",
+        "type": "STRENGTH",
+        "targetMuscles": [
+          "Квадрицепсы",
+          "Ягодицы"
+        ],
+        "equipment": "BARBELL",
+        "stepByStepDescription": [
+          "Возьмите штангу на плечи",
+          "Спину держите прямо",
+          "Медленно присядьте до параллели с полом"
+        ],
+        "img": "squats.jpg",
+        "difficulty": "INTERMEDIATE",
+        "parameters": {
+          "approaches": [
+            {
+              "sets": 3,
+              "reps": 10,
+              "weightRange": 60.0
+            },
+            {
+              "sets": 4,
+              "reps": 8,
+              "weightRange": 70.0
+            }
+          ],
+          "tempo": {
+            "eccentric": 2,
+            "pause": 1,
+            "concentric": 1,
+            "rest": 0
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Кардио тренировка",
+    "date": "2025-04-08T18:30:00Z",
+    "exercise": [
+      {
+        "id": 2,
+        "name": "Беговая дорожка",
+        "type": "CARDIO",
+        "targetMuscles": [
+          "Ноги",
+          "Сердце"
+        ],
+        "equipment": "MACHINE",
+        "stepByStepDescription": [
+          "Разминка 5 минут",
+          "Интервальный бег 20 минут"
+        ],
+        "img": "treadmill.jpg",
+        "difficulty": "BEGINNER",
+        "parameters": {
+          "approaches": [
+            {
+              "sets": 1,
+              "reps": null,
+              "weightRange": null
+            }
+          ],
+          "duration": 1500
+        }
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Йога",
+    "date": "2025-04-09T08:00:00Z",
+    "exercise": [
+      {
+        "id": 3,
+        "name": "Комплекс утренней йоги",
+        "type": "FLEXIBILITY",
+        "targetMuscles": [
+          "Все тело"
+        ],
+        "equipment": "BODYWEIGHT",
+        "stepByStepDescription": null,
+        "img": null,
+        "difficulty": null,
+        "parameters": {
+          "approaches": [
+            {
+              "sets": 2,
+              "reps": 15,
+              "weightRange": null
+            }
+          ],
+          "tempo": {
+            "eccentric": 3,
+            "pause": 2,
+            "concentric": 2,
+            "rest": 1
+          }
+        }
+      }
+    ]
+  }
+]

@@ -6,6 +6,7 @@ plugins {
 	alias(libs.plugins.composeMultiplatform)
 	alias(libs.plugins.composeCompiler)
 	alias(libs.plugins.kotlinSerialization)
+//	alias(libs.plugins.cocoapods)
 	id("kotlin-parcelize")
 }
 
@@ -31,7 +32,6 @@ kotlin {
 
 		androidMain.dependencies {
 			implementation(libs.kodein.di.framework.android.x)
-			implementation(compose.preview)
 			implementation(libs.androidx.activity.compose)
 
 			implementation(libs.kotlin.parcelize.runtime)
@@ -57,23 +57,36 @@ kotlin {
 			implementation(libs.kotlinx.serialization.json)
 			implementation(libs.kotlinx.serialization.core)
 
-			implementation(project(":feature:main"))
-			implementation(project(":feature:exercise:details"))
-			implementation(project(":feature:exercise:list"))
-			implementation(project(":feature:program"))
-			implementation(project(":feature:workout"))
-			implementation(project(":feature:profile"))
-//			implementation(project(":feature:progress"))
-//			implementation(project(":feature:list"))
-//			implementation(project(":feature:detail"))
-//			implementation(project(":feature:selection"))
+			implementation(projects.feature.main)
+			implementation(projects.feature.exercise.details)
+			implementation(projects.feature.exercise.list)
+			implementation(projects.feature.profile)
+			implementation(projects.feature.program)
+			implementation(projects.feature.workout)
 
-			implementation(project(":shared:training"))
-			implementation(project(":shared:profile"))
-			implementation(project(":shared:exercise"))
+			implementation(projects.shared.training)
+			implementation(projects.shared.profile)
+			implementation(projects.shared.exercise)
 
-			implementation(project(":design:theme"))
-			implementation(project(":design:resources"))
+			implementation(projects.design.theme)
+			implementation(projects.design.resources)
+		}
+
+		iosMain.dependencies {
+
+			implementation(projects.feature.main)
+			implementation(projects.feature.exercise.details)
+			implementation(projects.feature.exercise.list)
+			implementation(projects.feature.profile)
+			implementation(projects.feature.program)
+			implementation(projects.feature.workout)
+
+			implementation(projects.shared.training)
+			implementation(projects.shared.profile)
+			implementation(projects.shared.exercise)
+
+			implementation(projects.design.theme)
+			implementation(projects.design.resources)
 		}
 	}
 }
@@ -106,9 +119,6 @@ android {
 }
 
 dependencies {
-//	implementation(project(":core:database"))
-//	implementation(project(":core:network"))
-//	implementation(project(":core:mvi"))
 
 	debugImplementation(compose.uiTooling)
 }
