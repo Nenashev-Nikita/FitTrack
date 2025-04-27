@@ -1,0 +1,1 @@
+package ru.fit.app.shared.training.domain.usecaseclass GetTrainingsUseCaseTest

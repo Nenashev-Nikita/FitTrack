@@ -33,8 +33,6 @@ kotlin {
 		androidMain.dependencies {
 			implementation(libs.kodein.di.framework.android.x)
 			implementation(libs.androidx.activity.compose)
-
-			implementation(libs.kotlin.parcelize.runtime)
 		}
 
 		commonMain.dependencies {
