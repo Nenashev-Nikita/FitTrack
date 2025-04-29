@@ -1,0 +1,1 @@
+import PackageDescriptionlet package = Package(    name: "app",    platforms: [        .iOS(.v13)    ],    products: [        .library(            name: "app",            targets: ["app"]        ),    ],    targets: [        .binaryTarget(            name: "app",            path: "./build/XCFrameworks/release/app.xcframework"        )    ])

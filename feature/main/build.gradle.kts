@@ -50,14 +50,14 @@ kotlin {
             implementation(libs.kotlinx.datetime)
         }
 
-        commonTest.dependencies {
-            implementation(libs.junit.jupiter.api)
-            implementation(libs.junit.jupiter.engine)
-            implementation(libs.mockito.core)
-            implementation(libs.mockito.kotlin)
-            implementation(libs.kotlinx.coroutines.test)
-            implementation(libs.decompose.core)
-        }
+//        commonTest.dependencies {
+//            implementation(libs.junit.jupiter.api)
+//            implementation(libs.junit.jupiter.engine)
+//            implementation(libs.mockito.core)
+//            implementation(libs.mockito.kotlin)
+//            implementation(libs.kotlinx.coroutines.test)
+//            implementation(libs.decompose.core)
+//        }
     }
 }
 

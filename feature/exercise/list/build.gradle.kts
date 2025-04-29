@@ -32,15 +32,15 @@ kotlin {
 			implementation(libs.androidx.activity.compose)
 		}
 		commonMain.dependencies {
-			implementation(compose.runtime)
 			implementation(compose.foundation)
 			implementation(compose.material3)
-			implementation(libs.compose.material3)
 			implementation(compose.materialIconsExtended)
+			implementation(compose.runtime)
+
+			implementation(libs.compose.material3)
+			implementation(libs.decompose.core)
 
 			implementation(libs.kodein.di)
-
-			implementation(libs.decompose.core)
 
 			implementation(project(":shared:training"))
 			implementation(project(":shared:exercise"))

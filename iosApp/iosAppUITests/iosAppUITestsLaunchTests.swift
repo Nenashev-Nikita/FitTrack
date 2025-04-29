@@ -1,13 +1,13 @@
 //
-//  IosAppUITestsLaunchTests.swift
-//  IosAppUITests
+//  iosAppUITestsLaunchTests.swift
+//  iosAppUITests
 //
-//  Created by Ненашев Никита Алексеевич on 25.04.2025.
+//  Created by Ненашев Никита Алексеевич on 29.04.2025.
 //
 
 import XCTest
 
-final class IosAppUITestsLaunchTests: XCTestCase {
+final class iosAppUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

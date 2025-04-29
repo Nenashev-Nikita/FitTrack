@@ -6,30 +6,58 @@ plugins {
 	alias(libs.plugins.composeMultiplatform)
 	alias(libs.plugins.composeCompiler)
 	alias(libs.plugins.kotlinSerialization)
-//	alias(libs.plugins.cocoapods)
 	id("kotlin-parcelize")
 }
 
 kotlin {
 	androidTarget {
-		compilerOptions {
-			jvmTarget.set(JvmTarget.JVM_11)
+		compilations.all {
+			compileTaskProvider.configure {
+				compilerOptions {
+					jvmTarget.set(JvmTarget.JVM_11)
+				}
+			}
 		}
 	}
 
-	listOf(
-		iosX64(),
-		iosArm64(),
-		iosSimulatorArm64()
-	).forEach { iosTarget ->
-		iosTarget.binaries.framework {
-			baseName = "ComposeApp"
-			isStatic = true
+	iosArm64("iosArm64") {
+		binaries {
+			framework {
+				baseName = "app"
+				freeCompilerArgs += listOf("-Xbinary=bundleId=ru.fit.app.app")
+				linkerOpts("-ld_classic")
+			}
 		}
+	}
+
+	iosSimulatorArm64("iosSimulatorArm64") {
+		binaries {
+			framework {
+				baseName = "app"
+				freeCompilerArgs += listOf("-Xbinary=bundleId=ru.fit.app.app")
+				linkerOpts("-ld_classic")
+			}
+		}
+	}
+
+	tasks.register<Exec>("assembleReleaseXCFramework") {
+		dependsOn(
+			"linkReleaseFrameworkIosArm64",
+			"linkReleaseFrameworkIosSimulatorArm64"
+		)
+
+		group = "build"
+		description = "Creates an XCFramework for release build"
+
+		commandLine(
+			"xcodebuild", "-create-xcframework",
+			"-framework", "build/bin/iosArm64/releaseFramework/app.framework",
+			"-framework", "build/bin/iosSimulatorArm64/releaseFramework/app.framework",
+			"-output", "build/XCFrameworks/release/app.xcframework"
+		)
 	}
 
 	sourceSets {
-
 		androidMain.dependencies {
 			implementation(libs.kodein.di.framework.android.x)
 			implementation(libs.androidx.activity.compose)
@@ -42,16 +70,11 @@ kotlin {
 			implementation(compose.ui)
 			implementation(compose.components.resources)
 			implementation(compose.components.uiToolingPreview)
-			implementation(compose.runtime)
 			implementation(compose.materialIconsExtended)
-
 			implementation(libs.compose.material3)
-
 			implementation(libs.kodein.di)
-
 			implementation(libs.decompose.core)
 			implementation(libs.decompose.extensions.compose)
-
 			implementation(libs.kotlinx.serialization.json)
 			implementation(libs.kotlinx.serialization.core)
 
@@ -71,7 +94,6 @@ kotlin {
 		}
 
 		iosMain.dependencies {
-
 			implementation(projects.feature.main)
 			implementation(projects.feature.exercise.details)
 			implementation(projects.feature.exercise.list)
@@ -100,16 +122,19 @@ android {
 		versionCode = 1
 		versionName = "1.0"
 	}
+
 	packaging {
 		resources {
 			excludes += "/META-INF/{AL2.0,LGPL2.1}"
 		}
 	}
+
 	buildTypes {
 		getByName("release") {
 			isMinifyEnabled = false
 		}
 	}
+
 	compileOptions {
 		sourceCompatibility = JavaVersion.VERSION_11
 		targetCompatibility = JavaVersion.VERSION_11
@@ -117,6 +142,5 @@ android {
 }
 
 dependencies {
-
 	debugImplementation(compose.uiTooling)
 }

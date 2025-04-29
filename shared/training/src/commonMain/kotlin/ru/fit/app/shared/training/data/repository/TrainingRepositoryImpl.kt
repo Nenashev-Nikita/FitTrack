@@ -13,6 +13,6 @@ class TrainingRepositoryImpl(
 	override suspend fun getAll(): List<Training> {
 		val training = trainingApi.getAll()
 
-		return converterTraining(training)
+		return listOf()
 	}
 }
