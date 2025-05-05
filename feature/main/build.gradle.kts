@@ -8,85 +8,84 @@ plugins {
 }
 
 kotlin {
-    androidTarget {
-        compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_11)
-        }
-    }
+	androidTarget {
+		compilerOptions {
+			jvmTarget.set(JvmTarget.JVM_11)
+		}
+	}
 
-    listOf(
-        iosX64(),
-        iosArm64(),
-        iosSimulatorArm64()
-    ).forEach { iosTarget ->
-        iosTarget.binaries.framework {
-            baseName = "features_main"
-            isStatic = true
-        }
-    }
+	listOf(
+		iosX64(),
+		iosArm64(),
+		iosSimulatorArm64()
+	).forEach { iosTarget ->
+		iosTarget.binaries.framework {
+			baseName = "features_main"
+			isStatic = true
+		}
+	}
 
-    sourceSets {
+	sourceSets {
 
-        androidMain.dependencies {
-            implementation(compose.preview)
-            implementation(libs.androidx.activity.compose)
-        }
-        commonMain.dependencies {
-            implementation(project(":design:component"))
+		androidMain.dependencies {
+			implementation(compose.preview)
+			implementation(libs.androidx.activity.compose)
+		}
+		commonMain.dependencies {
+			implementation(project(":design:component"))
 
-            implementation(project(":shared:training"))
-            implementation(project(":shared:util"))
+			implementation(project(":shared:training"))
+			implementation(project(":shared:util"))
 
-            implementation(project(":core:presentation"))
+			implementation(project(":core:presentation"))
 
-            implementation(compose.runtime)
-            implementation(compose.foundation)
-            implementation(compose.material3)
-            implementation(libs.compose.material3)
+			implementation(compose.runtime)
+			implementation(compose.foundation)
+			implementation(compose.material3)
+			implementation(libs.compose.material3)
 
-            implementation(libs.kodein.di)
+			implementation(libs.kodein.di)
 
-            implementation(libs.decompose.core)
-            implementation(libs.kotlinx.datetime)
-        }
+			implementation(libs.decompose.core)
+			implementation(libs.kotlinx.datetime)
+		}
 
-//        commonTest.dependencies {
-//            implementation(libs.junit.jupiter.api)
-//            implementation(libs.junit.jupiter.engine)
-//            implementation(libs.mockito.core)
-//            implementation(libs.mockito.kotlin)
-//            implementation(libs.kotlinx.coroutines.test)
-//            implementation(libs.decompose.core)
-//        }
-    }
+		commonTest.dependencies {
+			implementation(libs.kotlin.test)
+			implementation(libs.kotlin.coroutine.test)
+			implementation(libs.mockk)
+			implementation(libs.lifecycle)
+			implementation(libs.turbine)
+		}
+	}
 }
 
 android {
-    namespace = "ru.fit.app.features.main"
-    compileSdk = libs.versions.android.compileSdk.get().toInt()
+	namespace = "ru.fit.app.features.main"
+	compileSdk = libs.versions.android.compileSdk.get().toInt()
 
-    defaultConfig {
-        minSdk = libs.versions.android.minSdk.get().toInt()
-    }
+	defaultConfig {
+		minSdk = libs.versions.android.minSdk.get().toInt()
+	}
 
-    packaging {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
-    }
+	packaging {
+		resources {
+			excludes += "/META-INF/{AL2.0,LGPL2.1}"
+		}
+	}
 
-    buildTypes {
-        getByName("release") {
-            isMinifyEnabled = false
-        }
-    }
+	buildTypes {
+		getByName("release") {
+			isMinifyEnabled = false
+		}
+	}
 
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
+	compileOptions {
+		sourceCompatibility = JavaVersion.VERSION_11
+		targetCompatibility = JavaVersion.VERSION_11
+	}
 }
 
 dependencies {
-    debugImplementation(compose.uiTooling)
+	debugImplementation(compose.uiTooling)
 }

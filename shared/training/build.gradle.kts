@@ -50,13 +50,16 @@ kotlin {
 			implementation(libs.ktor.client.darwin)
 		}
 
-		/*		commonTest.dependencies {
-					implementation(kotlin("test"))
-					implementation(libs.junit.jupiter.api)
-					implementation(libs.junit.jupiter.engine)
-					implementation(libs.mockito.kotlin)
-					implementation(libs.kotlinx.coroutines.test)
-				}*/
+		commonTest.dependencies {
+			implementation(libs.kotlin.test)
+			implementation(libs.kotlin.coroutine.test)
+			implementation(libs.mockk)
+		}
+		iosTest {
+			dependencies {
+				implementation(libs.mockk.agent)
+			}
+		}
 	}
 }
 
