@@ -1,6 +1,5 @@
 package ru.fit.app
 
-import FitTheme
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
