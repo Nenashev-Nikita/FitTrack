@@ -1,36 +1,41 @@
 package ru.fit.app.features.exercise.details.ui
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.DirectionsRun
-import androidx.compose.material.icons.filled.FitnessCenter
-import androidx.compose.material.icons.filled.SelfImprovement
-import androidx.compose.material.icons.filled.Sports
-import androidx.compose.material3.AssistChip
-import androidx.compose.material3.Badge
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.FilterList
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import ru.fit.app.FitTheme
+import ru.fit.app.design.component.ui.AppBar
+import ru.fit.app.design.component.ui.AppBarAction
+import ru.fit.app.design.component.ui.ChipItem
+import ru.fit.app.design.component.ui.HorizontalChipsList
+import ru.fit.app.design.component.ui.SearchBar
 import ru.fit.app.shared.exercise.domain.entity.Exercise
 
 @Composable
@@ -41,26 +46,83 @@ fun Content(
 ) {
 	val searchQuery by remember { mutableStateOf("") }
 	val selectedType by remember { mutableStateOf<Exercise.ExerciseType?>(null) }
+	val listState = rememberLazyListState()
+	val isScrollingUp = listState.isScrollingUp()
+	Box(modifier = modifier.fillMaxSize()) {
+		Column {
+			AppBar(
+				rightActions = listOf(
+					AppBarAction(
+						icon = Icons.Default.FilterList,
+						onClick = {}
+					)
+				)
+			)
 
-	Column(modifier = modifier.fillMaxSize()) {
-//		SearchBar(
-//			modifier = Modifier.padding(16.dp),
-//			inputField = {},
-//			expanded = true,
-//			onExpandedChange = {  },
-//		) {
-//
-//		}
+			SearchBar(
+				query = "Введите название...",
+				onQueryChange = {}
+			)
 
-//		ExerciseTypeFilter(
-//			selectedType = selectedType,
-//			onTypeSelected = { selectedType = it },
-//			modifier = Modifier.padding(horizontal = 16.dp)
-//		)
+			HorizontalChipsList(
+				iconChip = ChipItem(
+					icon = Icons.Default.Favorite,
+					isSelected = false,
+					onClick = {}
+				),
+				textChips = listOf(
+					ChipItem(
+						text = "Cardio",
+						isSelected = false,
+						onClick = {}
+					),
+					ChipItem(
+						text = "Strength",
+						isSelected = true,
+						onClick = {}
+					),
+					ChipItem(
+						text = "Yoga",
+						isSelected = false,
+						onClick = {}
+					),
+					ChipItem(
+						text = "Cardio",
+						isSelected = false,
+						onClick = {}
+					),
+					ChipItem(
+						text = "Strength",
+						isSelected = true,
+						onClick = {}
+					),
+					ChipItem(
+						text = "Yoga",
+						isSelected = false,
+						onClick = {}
+					),
+					ChipItem(
+						text = "Cardio",
+						isSelected = false,
+						onClick = {}
+					),
+					ChipItem(
+						text = "Strength",
+						isSelected = true,
+						onClick = {}
+					),
+					ChipItem(
+						text = "Yoga",
+						isSelected = false,
+						onClick = {}
+					),
+				),
+			)
 
 		LazyColumn(
-//			contentPadding = PaddingValues(16.dp),
-			verticalArrangement = Arrangement.spacedBy(8.dp)
+			contentPadding = PaddingValues(16.dp),
+			verticalArrangement = Arrangement.spacedBy(8.dp),
+			state = listState,
 		) {
 			items(
 				items = exercises
@@ -68,57 +130,29 @@ fun Content(
 					.filter { it.name.contains(searchQuery, true) },
 				key = { it.id }
 			) { exercise ->
-				ExerciseItem(
+				ExerciseCard(
 					exercise = exercise,
 					onClick = { onExerciseClick(exercise.id) }
 				)
 			}
 		}
-	}
-}
-
-@Composable
-private fun ExerciseItem(
-	exercise: Exercise,
-	onClick: () -> Unit,
-	modifier: Modifier = Modifier,
-) {
-	Card(
-		onClick = onClick,
-		modifier = modifier.fillMaxWidth(),
-		elevation = CardDefaults.cardElevation(4.dp)
-	) {
-		Row(
-			modifier = Modifier.padding(16.dp),
-			verticalAlignment = Alignment.CenterVertically
+		}
+		AnimatedVisibility(
+			visible = isScrollingUp || !listState.canScrollForward && !listState.canScrollBackward,
+			enter = fadeIn() + slideInVertically { it },
+			exit = fadeOut() + slideOutVertically { it },
+			modifier = Modifier
+				.align(Alignment.BottomEnd)
+				.padding(16.dp)
 		) {
-//			ExerciseImage(
-//				imageUrl = exercise.img,
-//				modifier = Modifier.size(100.dp)
-//			)
-
-			Spacer(Modifier.width(16.dp))
-
-			Column(Modifier.weight(1f)) {
-				Text(
-					text = exercise.name,
-					style = MaterialTheme.typography.titleLarge,
-					maxLines = 1,
-					overflow = TextOverflow.Ellipsis
-				)
-
-				ExerciseTypeChip(type = exercise.type)
-
-				exercise.difficulty?.let {
-					DifficultyBadge(difficulty = it)
-				}
-
-				Text(
-					text = exercise.targetMuscles?.joinToString() ?: "",
-					style = MaterialTheme.typography.bodyMedium,
-					color = MaterialTheme.colorScheme.onSurfaceVariant,
-					maxLines = 2,
-					overflow = TextOverflow.Ellipsis
+			FloatingActionButton(
+				onClick = {},
+				containerColor = FitTheme.colors.permanentPrimary,
+				contentColor = FitTheme.colors.fondInvert
+			) {
+				Icon(
+					imageVector = Icons.Default.Add,
+					contentDescription = "Add exercise"
 				)
 			}
 		}
@@ -126,53 +160,19 @@ private fun ExerciseItem(
 }
 
 @Composable
-private fun ExerciseTypeChip(type: Exercise.ExerciseType) {
-	val (text, icon) = when (type) {
-		Exercise.ExerciseType.STRENGTH    -> "Сила" to Icons.Default.FitnessCenter
-		Exercise.ExerciseType.CARDIO      -> "Кардио" to Icons.Default.DirectionsRun
-		Exercise.ExerciseType.FLEXIBILITY -> "Гибкость" to Icons.Default.SelfImprovement
-		else                              -> "Другое" to Icons.Default.Sports
-	}
-
-	AssistChip(
-		onClick = {},
-		label = { Text(text) },
-		leadingIcon = {
-			Icon(
-				imageVector = icon,
-				contentDescription = null
-			)
+private fun LazyListState.isScrollingUp(): Boolean {
+	var previousIndex by remember(this) { mutableStateOf(firstVisibleItemIndex) }
+	var previousScrollOffset by remember(this) { mutableStateOf(firstVisibleItemScrollOffset) }
+	return remember(this) {
+		derivedStateOf {
+			if (previousIndex != firstVisibleItemIndex) {
+				previousIndex > firstVisibleItemIndex
+			} else {
+				previousScrollOffset >= firstVisibleItemScrollOffset
+			}.also {
+				previousIndex = firstVisibleItemIndex
+				previousScrollOffset = firstVisibleItemScrollOffset
+			}
 		}
-	)
-}
-
-@Composable
-private fun DifficultyBadge(difficulty: Exercise.DifficultyLevel) {
-	val color = when (difficulty) {
-		Exercise.DifficultyLevel.BEGINNER     -> Color.Green
-		Exercise.DifficultyLevel.INTERMEDIATE -> Color.Yellow
-		Exercise.DifficultyLevel.ADVANCED     -> Color.Magenta
-		Exercise.DifficultyLevel.ATHLETE      -> Color.Red
-	}
-
-	Badge(
-		containerColor = color.copy(alpha = 0.2f),
-		contentColor = color
-	) {
-		Text(
-			text = difficulty.name,
-			style = MaterialTheme.typography.labelSmall
-		)
-	}
-}
-
-@Composable
-private fun ExerciseImage(imageUrl: String?, modifier: Modifier = Modifier) {
-//	AsyncImage(
-//		model = imageUrl,
-//		contentDescription = null,
-//		modifier = modifier.clip(RoundedCornerShape(8.dp)),
-//		placeholder = painterResource(R.drawable.placeholder_exercise),
-//		error = painterResource(R.drawable.placeholder_exercise)
-//	)
+	}.value
 }

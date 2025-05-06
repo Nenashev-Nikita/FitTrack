@@ -42,8 +42,11 @@ kotlin {
 
 			implementation(libs.kodein.di)
 
-			implementation(project(":shared:training"))
-			implementation(project(":shared:exercise"))
+			implementation(projects.shared.training)
+			implementation(projects.shared.exercise)
+
+			implementation(projects.design.component)
+			implementation(projects.design.theme)
 		}
 	}
 }

@@ -26,7 +26,6 @@ import androidx.compose.material.icons.filled.FitnessCenter
 import androidx.compose.material.icons.filled.Height
 import androidx.compose.material.icons.filled.MonitorWeight
 import androidx.compose.material.icons.filled.Notifications
-import androidx.compose.material.icons.filled.Phone
 import androidx.compose.material.icons.filled.SelfImprovement
 import androidx.compose.material.icons.filled.Sms
 import androidx.compose.material.icons.filled.Sports
@@ -34,6 +33,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.FilterChip
+import androidx.compose.material3.FilterChipDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
@@ -43,9 +43,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
+import ru.fit.app.FitTheme
+import ru.fit.app.design.component.ui.ProgressButton
 import ru.fit.app.shared.profile.domain.entity.ActivityLevel
 import ru.fit.app.shared.profile.domain.entity.NotificationSettings
 import ru.fit.app.shared.profile.domain.entity.UserProfile
@@ -61,93 +62,85 @@ fun Content(
 		modifier = modifier
 			.verticalScroll(rememberScrollState())
 	) {
-
-		Button(onClick = { onProgressClick() }) {
-			Text("Progress")
-		}
-
 		ProfileHeader(userProfile)
+
+		ProgressButton(
+			title = "Прогресс по упражнениям",
+			subtitle = "Здесь вы сможете проверить свой прогресс про упражнениям",
+			onClick = {},
+			modifier = Modifier.padding(16.dp)
+		)
+
 		PhysicalParams(userProfile)
+
 		GoalsSection(userProfile)
+
 		ActivitySection(userProfile)
-		NotificationSettings(userProfile.notificationSettings)
-//		SocialMediaLinks(userProfile.socialMediaLinks)
+
+//		NotificationSettings(userProfile.notificationSettings)
 	}
 }
 
 @Composable
 private fun ProfileHeader(user: UserProfile) {
-	Card(
-		modifier = Modifier
-			.fillMaxWidth()
-			.padding(16.dp),
-		elevation = CardDefaults.cardElevation(4.dp)
+	Box(
+		modifier = Modifier.fillMaxWidth()
 	) {
-		Column(
-			modifier = Modifier.padding(16.dp),
-			horizontalAlignment = Alignment.CenterHorizontally
-		) {
-			Box(
-				modifier = Modifier
-					.size(120.dp)
-					.clip(CircleShape)
-					.background(MaterialTheme.colorScheme.primary),
-				contentAlignment = Alignment.Center
-			) {
-				user.avatarUrl?.let {
-//					Image(
-//						painter = ,
-//						contentDescription = null,
-//						modifier = Modifier.fillMaxSize()
-//					)
-				} ?: Text(
-					text = user.firstName.take(1) + user.lastName.take(1),
-					style = MaterialTheme.typography.displayLarge,
-					color = MaterialTheme.colorScheme.onPrimary
-				)
-			}
 
-			Spacer(modifier = Modifier.height(16.dp))
-
-			Text(
-				text = "${user.firstName} ${user.lastName}",
-				style = MaterialTheme.typography.headlineMedium
-			)
-
-			Text(
-				text = "@${user.username}",
-				color = MaterialTheme.colorScheme.onSurfaceVariant,
-				style = MaterialTheme.typography.bodyLarge
-			)
-
-			Spacer(modifier = Modifier.height(16.dp))
-
-			ContactInfo(user.email, user.phone)
-		}
+		Spacer(modifier = Modifier.height(16.dp))
+		Text(
+			text = "${user.firstName} ${user.lastName}",
+			style = MaterialTheme.typography.headlineMedium
+		)
+		Text(
+			text = "@${user.username}",
+			color = FitTheme.colors.fondSecondary,
+			style = MaterialTheme.typography.bodyLarge
+		)
 	}
 }
 
 @Composable
-private fun ContactInfo(email: String, phone: String?) {
-	Column {
-		Row(
-			verticalAlignment = Alignment.CenterVertically,
-			modifier = Modifier.padding(vertical = 4.dp)
-		) {
-			Icon(Icons.Default.Email, contentDescription = null)
-			Spacer(modifier = Modifier.width(8.dp))
-			Text(email)
-		}
-
-		phone?.let {
-			Row(
-				verticalAlignment = Alignment.CenterVertically,
-				modifier = Modifier.padding(vertical = 4.dp)
-			) {
-				Icon(Icons.Default.Phone, contentDescription = null)
-				Spacer(modifier = Modifier.width(8.dp))
-				Text(phone)
-			}
+fun ExerciseImage(
+	imageUrl: String?,
+	exerciseName: String,
+	modifier: Modifier = Modifier
+) {
+	Box(
+		modifier = modifier
+			.size(64.dp)
+			.background(
+				color = FitTheme.colors.permanentPrimaryLight,
+				shape = CircleShape
+			),
+		contentAlignment = Alignment.Center
+	) {
+		if (imageUrl != null) {
+//			AsyncImage(
+//				model = imageUrl,
+//				contentDescription = "Exercise image for $exerciseName",
+//				modifier = Modifier.size(64.dp),
+//				onState = { state ->
+//					when (state) {
+//						is AsyncImagePainter.State.Loading -> {}
+//						is AsyncImagePainter.State.Error -> {
+//							Text(
+//								text = exerciseName.take(2).uppercase(),
+//								color = FitTheme.colors.fondInvert,
+//								fontSize = 20.sp
+//							)
+//						}
+//						else -> {}
+//					}
+//				}
+//			)
+		} else {
+			Icon(
+				imageVector = Icons.Default.FitnessCenter,
+				contentDescription = null,
+				tint = FitTheme.colors.fondInvert,
+				modifier = Modifier.size(32.dp)
+			)
 		}
 	}
 }
@@ -163,7 +156,6 @@ private fun PhysicalParams(user: UserProfile) {
 		item {
 			ParamCard(
 				title = "Возраст",
-//				value = user.birthDate?.let { 23 }?.toString() ?: "-",
 				value = "23",
 				icon = Icons.Default.Cake
 			)
@@ -174,7 +166,11 @@ private fun PhysicalParams(user: UserProfile) {
 @Composable
 private fun ParamCard(title: String, value: String, icon: ImageVector) {
 	Card(
-		elevation = CardDefaults.cardElevation(4.dp)
+		elevation = CardDefaults.cardElevation(4.dp),
+		colors = CardDefaults.cardColors(
+			containerColor = FitTheme.colors.bGTertiary,
+			contentColor = FitTheme.colors.fondPrimary
+		)
 	) {
 		Column(
 			modifier = Modifier
@@ -182,10 +178,21 @@ private fun ParamCard(title: String, value: String, icon: ImageVector) {
 				.padding(16.dp),
 			horizontalAlignment = Alignment.CenterHorizontally
 		) {
-			Icon(icon, contentDescription = title)
+			Icon(
+				icon,
+				contentDescription = title,
+				tint = FitTheme.colors.permanentPrimary
+			)
 			Spacer(modifier = Modifier.height(8.dp))
-			Text(value, style = MaterialTheme.typography.headlineSmall)
-			Text(title, style = MaterialTheme.typography.bodySmall)
+			Text(
+				value,
+				style = MaterialTheme.typography.headlineSmall
+			)
+			Text(
+				title,
+				style = MaterialTheme.typography.bodySmall,
+				color = FitTheme.colors.fondSecondary
+			)
 		}
 	}
 }
@@ -197,11 +204,15 @@ private fun ActivitySection(user: UserProfile) {
 		modifier = Modifier
 			.fillMaxWidth()
 			.padding(16.dp),
-		elevation = CardDefaults.cardElevation(4.dp)
+		elevation = CardDefaults.cardElevation(4.dp),
+		colors = CardDefaults.cardColors(
+			containerColor = FitTheme.colors.bGTertiary,
+			contentColor = FitTheme.colors.fondPrimary
+		)
 	) {
 		Column(modifier = Modifier.padding(16.dp)) {
 			Text(
-				"Уровень активности: ${user.activityLevel.name}",
+				text = "Уровень активности: ${user.activityLevel.name}",
 				style = MaterialTheme.typography.titleLarge
 			)
 			Spacer(modifier = Modifier.height(8.dp))
@@ -209,18 +220,21 @@ private fun ActivitySection(user: UserProfile) {
 				progress = {
 					when (user.activityLevel) {
 						ActivityLevel.SEDENTARY -> 0.2f
-						ActivityLevel.LIGHT -> 0.4f
-						ActivityLevel.MODERATE -> 0.6f
-						ActivityLevel.ACTIVE -> 0.8f
+						ActivityLevel.LIGHT     -> 0.4f
+						ActivityLevel.MODERATE  -> 0.6f
+						ActivityLevel.ACTIVE    -> 0.8f
 						ActivityLevel.VERY_ACTIVE -> 1f
 					}
 				},
 				modifier = Modifier.fillMaxWidth(),
+				color = FitTheme.colors.permanentPrimary,
+				trackColor = FitTheme.colors.bGTertiary
 			)
-
 			Spacer(modifier = Modifier.height(16.dp))
-
-			Text("Предпочитаемые тренировки:", style = MaterialTheme.typography.titleMedium)
+			Text(
+				text = "Предпочитаемые тренировки:",
+				style = MaterialTheme.typography.titleMedium
+			)
 			FlowRow(
 				modifier = Modifier.padding(top = 8.dp),
 				horizontalArrangement = Arrangement.spacedBy(8.dp)
@@ -238,9 +252,16 @@ private fun ActivitySection(user: UserProfile) {
 									WorkoutType.YOGA              -> Icons.Default.SelfImprovement
 									else                          -> Icons.Default.Sports
 								},
-								contentDescription = null
+								contentDescription = null,
+								tint = FitTheme.colors.permanentPrimary
 							)
-						}
+						},
+						colors = FilterChipDefaults.filterChipColors(
+							containerColor = FitTheme.colors.bGPrimary,
+							selectedContainerColor = FitTheme.colors.bGPrimary,
+							labelColor = FitTheme.colors.fondPrimary,
+							iconColor = FitTheme.colors.permanentPrimary
+						)
 					)
 				}
 			}
@@ -254,15 +275,25 @@ private fun GoalsSection(user: UserProfile) {
 		modifier = Modifier
 			.fillMaxWidth()
 			.padding(16.dp),
-		elevation = CardDefaults.cardElevation(4.dp)
+		elevation = CardDefaults.cardElevation(4.dp),
+		colors = CardDefaults.cardColors(
+			containerColor = FitTheme.colors.bGTertiary,
+			contentColor = FitTheme.colors.fondPrimary
+		)
 	) {
 		Column(modifier = Modifier.padding(16.dp)) {
-			Text("Мои цели", style = MaterialTheme.typography.titleLarge)
-
+			Text(
+				text = "Мои цели",
+				style = MaterialTheme.typography.titleLarge
+			)
 			if (user.fitnessGoals.isEmpty()) {
 				Button(
-					onClick = { /* Добавить цель */ },
-					modifier = Modifier.padding(top = 16.dp)
+					onClick = {},
+					modifier = Modifier.padding(top = 16.dp),
+					colors = androidx.compose.material3.ButtonDefaults.buttonColors(
+						containerColor = FitTheme.colors.permanentPrimary,
+						contentColor = FitTheme.colors.fondInvert
+					)
 				) {
 					Text("Добавить первую цель")
 				}
@@ -276,10 +307,13 @@ private fun GoalsSection(user: UserProfile) {
 							Icon(
 								Icons.Default.CheckCircle,
 								contentDescription = null,
-								tint = MaterialTheme.colorScheme.primary
+								tint = FitTheme.colors.permanentPrimary
 							)
 							Spacer(modifier = Modifier.width(8.dp))
-							Text(goal)
+							Text(
+								text = goal,
+								color = FitTheme.colors.fondPrimary
+							)
 						}
 					}
 				}
@@ -294,13 +328,18 @@ private fun NotificationSettings(settings: NotificationSettings) {
 		modifier = Modifier
 			.fillMaxWidth()
 			.padding(16.dp),
-		elevation = CardDefaults.cardElevation(4.dp)
+		elevation = CardDefaults.cardElevation(4.dp),
+		colors = CardDefaults.cardColors(
+			containerColor = FitTheme.colors.bGTertiary,
+			contentColor = FitTheme.colors.fondPrimary
+		)
 	) {
 		Column(modifier = Modifier.padding(16.dp)) {
-			Text("Настройки уведомлений", style = MaterialTheme.typography.titleLarge)
-
+			Text(
+				text = "Настройки уведомлений",
+				style = MaterialTheme.typography.titleLarge
+			)
 			Spacer(modifier = Modifier.height(8.dp))
-
 			NotificationSettingItem(
 				label = "Email-уведомления",
 				enabled = settings.emailNotifications,
@@ -331,92 +370,25 @@ private fun NotificationSettingItem(label: String, enabled: Boolean, icon: Image
 		Icon(
 			icon,
 			contentDescription = label,
-			tint = MaterialTheme.colorScheme.primary
+			tint = FitTheme.colors.permanentPrimary
 		)
 		Spacer(modifier = Modifier.width(16.dp))
 		Text(
 			text = label,
 			style = MaterialTheme.typography.bodyLarge,
-			modifier = Modifier.weight(1f)
+			modifier = Modifier.weight(1f),
+			color = FitTheme.colors.fondPrimary
 		)
 		Switch(
 			checked = enabled,
 			onCheckedChange = null,
 			enabled = false,
 			colors = SwitchDefaults.colors(
-				checkedThumbColor = MaterialTheme.colorScheme.primary,
-				checkedTrackColor = MaterialTheme.colorScheme.primaryContainer
+				checkedThumbColor = FitTheme.colors.permanentPrimary,
+				checkedTrackColor = FitTheme.colors.permanentPrimaryLight,
+				uncheckedThumbColor = FitTheme.colors.bGTertiary,
+				uncheckedTrackColor = FitTheme.colors.bGTertiary
 			)
 		)
 	}
 }
-/*
-
-@Composable
-private fun SocialMediaLinks(links: List<SocialMediaLink>) {
-	Card(
-		modifier = Modifier
-			.fillMaxWidth()
-			.padding(16.dp),
-		elevation = CardDefaults.cardElevation(4.dp)
-	) {
-		Column(modifier = Modifier.padding(16.dp)) {
-			Text("Социальные сети", style = MaterialTheme.typography.titleLarge)
-
-			Spacer(modifier = Modifier.height(8.dp))
-
-			links.forEach { link ->
-				SocialMediaLinkItem(
-					type = link.type,
-					url = link.url,
-					modifier = Modifier.padding(vertical = 8.dp)
-				)
-			}
-		}
-	}
-}
-
-@Composable
-private fun SocialMediaLinkItem(type: UserProfile.SocialMediaType, url: String, modifier: Modifier = Modifier) {
-	val context = LocalContext.current
-	val icon = when (type) {
-		UserProfile.SocialMediaType.INSTAGRAM -> Icons.Default.Person
-		UserProfile.SocialMediaType.FACEBOOK -> Icons.Default.Facebook
-		UserProfile.SocialMediaType.TWITTER -> Icons.Default.Public
-		UserProfile.SocialMediaType.LINKEDIN -> Icons.Default.Work
-		else -> Icons.Default.Link
-	}
-
-	Row(
-		verticalAlignment = Alignment.CenterVertically,
-		modifier = modifier
-			.fillMaxWidth()
-			.clickable {
-				try {
-					context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
-				} catch (e: Exception) {
-					Toast.makeText(context, "Невозможно открыть ссылку", Toast.LENGTH_SHORT).show()
-				}
-			}
-			.padding(8.dp)
-	) {
-		Icon(
-			icon,
-			contentDescription = type.name,
-			tint = MaterialTheme.colorScheme.primary
-		)
-		Spacer(modifier = Modifier.width(16.dp))
-		Text(
-			text = when (type) {
-				UserProfile.SocialMediaType.INSTAGRAM -> "Instagram"
-				UserProfile.SocialMediaType.FACEBOOK -> "Facebook"
-				UserProfile.SocialMediaType.TWITTER -> "Twitter"
-				UserProfile.SocialMediaType.LINKEDIN -> "LinkedIn"
-				else -> "Другая сеть"
-			},
-			style = MaterialTheme.typography.bodyLarge,
-			color = MaterialTheme.colorScheme.primary
-		)
-	}
-}
-*/

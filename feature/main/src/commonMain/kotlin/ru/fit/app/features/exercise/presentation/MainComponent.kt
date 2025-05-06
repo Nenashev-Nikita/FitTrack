@@ -2,7 +2,6 @@ package ru.fit.app.features.exercise.presentation
 
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.essenty.lifecycle.doOnDestroy
-import com.arkivanov.essenty.lifecycle.subscribe
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -25,15 +24,14 @@ class MainComponent(
 	val screenState: StateFlow<State> = _screenState.asStateFlow()
 
 	init {
-		lifecycle.subscribe(
-			onDestroy = { coroutineScope.cancel() }
-		)
 		lifecycle.doOnDestroy {
 			coroutineScope.cancel()
 		}
 	}
 
 	fun loadContent() {
+		if (_screenState.value is State.Loading) return
+
 		coroutineScope.launch {
 			_screenState.value = State.Loading
 			try {

@@ -30,14 +30,16 @@ kotlin {
 
 		commonMain.dependencies {
 			implementation(project(":design:component"))
-			implementation(project(":shared:training"))
-			implementation(project(":shared:profile"))
+			implementation(project(":design:theme"))
+
 			implementation(project(":shared:exercise"))
-			implementation(compose.runtime)
+			implementation(project(":shared:profile"))
+			implementation(project(":shared:training"))
+
 			implementation(compose.foundation)
 			implementation(compose.material3)
-			implementation(libs.compose.material3)
 			implementation(compose.materialIconsExtended)
+			implementation(compose.runtime)
 
 			implementation(libs.kodein.di)
 

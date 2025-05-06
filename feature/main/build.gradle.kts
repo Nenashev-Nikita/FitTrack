@@ -32,16 +32,18 @@ kotlin {
 			implementation(libs.androidx.activity.compose)
 		}
 		commonMain.dependencies {
-			implementation(project(":design:component"))
+			implementation(projects.design.theme)
+			implementation(projects.design.component)
+			implementation(projects.shared.training)
+			implementation(projects.shared.util)
 
-			implementation(project(":shared:training"))
-			implementation(project(":shared:util"))
-
-			implementation(project(":core:presentation"))
+			implementation(projects.core.presentation)
 
 			implementation(compose.runtime)
 			implementation(compose.foundation)
 			implementation(compose.material3)
+			implementation(compose.materialIconsExtended)
+
 			implementation(libs.compose.material3)
 
 			implementation(libs.kodein.di)
