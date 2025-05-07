@@ -1,0 +1,568 @@
+[
+  {
+    "id": 1,
+    "name": "Приседания со штангой",
+    "type": "STRENGTH",
+    "targetMuscles": [
+      "Квадрицепсы",
+      "Ягодицы"
+    ],
+    "equipment": "BARBELL",
+    "stepByStepDescription": [
+      "Возьмите штангу на плечи",
+      "Спину держите прямо",
+      "Медленно присядьте до параллели с полом"
+    ],
+    "img": "squats.jpg",
+    "difficulty": "INTERMEDIATE",
+    "parameters": {
+      "approaches": [
+        {
+          "sets": 3,
+          "reps": 10,
+          "weightRange": 60.0
+        },
+        {
+          "sets": 4,
+          "reps": 8,
+          "weightRange": 70.0
+        }
+      ],
+      "tempo": {
+        "eccentric": 2,
+        "pause": 1,
+        "concentric": 1,
+        "rest": 0
+      }
+    }
+  },
+  {
+    "id": 2,
+    "name": "Беговая дорожка",
+    "type": "CARDIO",
+    "targetMuscles": [
+      "Ноги",
+      "Сердце"
+    ],
+    "equipment": "MACHINE",
+    "stepByStepDescription": [
+      "Разминка 5 минут",
+      "Интервальный бег 20 минут"
+    ],
+    "img": "treadmill.jpg",
+    "difficulty": "BEGINNER",
+    "parameters": {
+      "approaches": [
+        {
+          "sets": 1,
+          "reps": null,
+          "weightRange": null
+        }
+      ],
+      "duration": 1500
+    }
+  },
+  {
+    "id": 3,
+    "name": "Комплекс утренней йоги",
+    "type": "FLEXIBILITY",
+    "targetMuscles": [
+      "Все тело"
+    ],
+    "equipment": "BODYWEIGHT",
+    "stepByStepDescription": null,
+    "img": null,
+    "difficulty": null,
+    "parameters": {
+      "approaches": [
+        {
+          "sets": 2,
+          "reps": 15,
+          "weightRange": null
+        }
+      ],
+      "tempo": {
+        "eccentric": 3,
+        "pause": 2,
+        "concentric": 2,
+        "rest": 1
+      }
+    }
+  },
+  {
+    "id": 4,
+    "name": "Жим штанги лёжа",
+    "type": "STRENGTH",
+    "targetMuscles": [
+      "Грудные",
+      "Трицепсы"
+    ],
+    "equipment": "BARBELL",
+    "stepByStepDescription": [
+      "Лягте на скамью",
+      "Возьмите штангу широким хватом",
+      "Опустите до касания груди",
+      "Выжмите в исходное положение"
+    ],
+    "img": "bench_press.jpg",
+    "difficulty": "INTERMEDIATE",
+    "parameters": {
+      "approaches": [
+        {
+          "sets": 4,
+          "reps": 8,
+          "weightRange": 80.0
+        },
+        {
+          "sets": 3,
+          "reps": 10,
+          "weightRange": 70.0
+        }
+      ],
+      "tempo": {
+        "eccentric": 2,
+        "pause": 1,
+        "concentric": 1,
+        "rest": 0
+      }
+    }
+  },
+  {
+    "id": 5,
+    "name": "Велотренажёр",
+    "type": "CARDIO",
+    "targetMuscles": [
+      "Ноги",
+      "Сердце"
+    ],
+    "equipment": "MACHINE",
+    "stepByStepDescription": [
+      "Настройте высоту сиденья",
+      "Начните педалирование с умеренной скоростью"
+    ],
+    "img": "bike.jpg",
+    "difficulty": "BEGINNER",
+    "parameters": {
+      "approaches": [
+        {
+          "sets": 1,
+          "reps": null,
+          "weightRange": null
+        }
+      ],
+      "duration": 1800
+    }
+  },
+  {
+    "id": 6,
+    "name": "Планка",
+    "type": "STRENGTH",
+    "targetMuscles": [
+      "Пресс",
+      "Мышцы кора"
+    ],
+    "equipment": "BODYWEIGHT",
+    "stepByStepDescription": [
+      "Примите положение упора лёжа",
+      "Держите тело прямым",
+      "Напрягите пресс"
+    ],
+    "img": "plank.jpg",
+    "difficulty": "BEGINNER",
+    "parameters": {
+      "approaches": [
+        {
+          "sets": 3,
+          "reps": null,
+          "weightRange": null
+        }
+      ],
+      "duration": 60
+    }
+  },
+  {
+    "id": 7,
+    "name": "Плавание кролем",
+    "type": "CARDIO",
+    "targetMuscles": [
+      "Всё тело"
+    ],
+    "equipment": "POOL",
+    "stepByStepDescription": null,
+    "img": "swimming.jpg",
+    "difficulty": "INTERMEDIATE",
+    "parameters": {
+      "approaches": [
+        {
+          "sets": 1,
+          "reps": null,
+          "weightRange": null
+        }
+      ],
+      "duration": 2700
+    }
+  },
+  {
+    "id": 8,
+    "name": "Растяжка подколенных сухожилий",
+    "type": "FLEXIBILITY",
+    "targetMuscles": [
+      "Задняя поверхность бедра"
+    ],
+    "equipment": "MAT",
+    "stepByStepDescription": [
+      "Сядьте на пол, ноги прямо",
+      "Наклонитесь вперед к носкам"
+    ],
+    "img": "hamstring_stretch.jpg",
+    "difficulty": "BEGINNER",
+    "parameters": {
+      "approaches": [
+        {
+          "sets": 3,
+          "reps": 10,
+          "weightRange": null
+        }
+      ],
+      "tempo": {
+        "eccentric": 3,
+        "pause": 2,
+        "concentric": 1,
+        "rest": 0
+      }
+    }
+  },
+  {
+    "id": 9,
+    "name": "Становая тяга",
+    "type": "STRENGTH",
+    "targetMuscles": [
+      "Спина",
+      "Бицепсы бедра"
+    ],
+    "equipment": "BARBELL",
+    "stepByStepDescription": [
+      "Возьмите штангу прямым хватом",
+      "Держите спину прямой",
+      "Поднимите вес за счёт ног и спины"
+    ],
+    "img": "deadlift.jpg",
+    "difficulty": "ADVANCED",
+    "parameters": {
+      "approaches": [
+        {
+          "sets": 5,
+          "reps": 5,
+          "weightRange": 120.0
+        }
+      ],
+      "tempo": {
+        "eccentric": 3,
+        "pause": 1,
+        "concentric": 2,
+        "rest": 0
+      }
+    }
+  },
+  {
+    "id": 10,
+    "name": "Скакалка",
+    "type": "CARDIO",
+    "targetMuscles": [
+      "Икры",
+      "Сердце"
+    ],
+    "equipment": "JUMP_ROPE",
+    "stepByStepDescription": [
+      "Возьмите скакалку за ручки",
+      "Вращайте кистями, прыгая на носках"
+    ],
+    "img": "jump_rope.jpg",
+    "difficulty": "BEGINNER",
+    "parameters": {
+      "approaches": [
+        {
+          "sets": 1,
+          "reps": null,
+          "weightRange": null
+        }
+      ],
+      "duration": 900
+    }
+  },
+  {
+    "id": 11,
+    "name": "Подтягивания",
+    "type": "STRENGTH",
+    "targetMuscles": [
+      "Широчайшие",
+      "Бицепсы"
+    ],
+    "equipment": "PULL_UP_BAR",
+    "stepByStepDescription": [
+      "Возьмитесь за перекладину широким хватом",
+      "Подтяните тело вверх до подбородка"
+    ],
+    "img": "pullups.jpg",
+    "difficulty": "INTERMEDIATE",
+    "parameters": {
+      "approaches": [
+        {
+          "sets": 4,
+          "reps": 8,
+          "weightRange": null
+        }
+      ],
+      "tempo": {
+        "eccentric": 2,
+        "pause": 1,
+        "concentric": 1,
+        "rest": 0
+      }
+    }
+  },
+  {
+    "id": 12,
+    "name": "Гребной тренажёр",
+    "type": "CARDIO",
+    "targetMuscles": [
+      "Спина",
+      "Ноги"
+    ],
+    "equipment": "ROWING_MACHINE",
+    "stepByStepDescription": [
+      "Зафиксируйте стопы",
+      "Тяните рукоять к поясу"
+    ],
+    "img": "rowing.jpg",
+    "difficulty": "INTERMEDIATE",
+    "parameters": {
+      "approaches": [
+        {
+          "sets": 1,
+          "reps": null,
+          "weightRange": null
+        }
+      ],
+      "duration": 1500
+    }
+  },
+  {
+    "id": 13,
+    "name": "Мостик для ягодиц",
+    "type": "STRENGTH",
+    "targetMuscles": [
+      "Ягодицы",
+      "Бицепсы бедра"
+    ],
+    "equipment": "BODYWEIGHT",
+    "stepByStepDescription": [
+      "Лягте на спину, согните ноги",
+      "Поднимите таз вверх, напрягая ягодицы"
+    ],
+    "img": "glute_bridge.jpg",
+    "difficulty": "BEGINNER",
+    "parameters": {
+      "approaches": [
+        {
+          "sets": 3,
+          "reps": 15,
+          "weightRange": null
+        }
+      ],
+      "tempo": {
+        "eccentric": 2,
+        "pause": 1,
+        "concentric": 1,
+        "rest": 0
+      }
+    }
+  },
+  {
+    "id": 14,
+    "name": "Боксёрская груша",
+    "type": "CARDIO",
+    "targetMuscles": [
+      "Плечи",
+      "Кор"
+    ],
+    "equipment": "PUNCHING_BAG",
+    "stepByStepDescription": [
+      "Наденьте перчатки",
+      "Наносите удары по груше"
+    ],
+    "img": "punching_bag.jpg",
+    "difficulty": "INTERMEDIATE",
+    "parameters": {
+      "approaches": [
+        {
+          "sets": 1,
+          "reps": null,
+          "weightRange": null
+        }
+      ],
+      "duration": 1800
+    }
+  },
+  {
+    "id": 15,
+    "name": "Пилатес",
+    "type": "FLEXIBILITY",
+    "targetMuscles": [
+      "Мышцы кора"
+    ],
+    "equipment": "MAT",
+    "stepByStepDescription": null,
+    "img": "pilates.jpg",
+    "difficulty": "INTERMEDIATE",
+    "parameters": {
+      "approaches": [
+        {
+          "sets": 2,
+          "reps": 20,
+          "weightRange": null
+        }
+      ],
+      "duration": 2400
+    }
+  },
+  {
+    "id": 16,
+    "name": "Армейский жим",
+    "type": "STRENGTH",
+    "targetMuscles": [
+      "Плечи",
+      "Трицепсы"
+    ],
+    "equipment": "DUMBBELLS",
+    "stepByStepDescription": [
+      "Возьмите гантели на уровень плеч",
+      "Выжмите вверх над головой"
+    ],
+    "img": "military_press.jpg",
+    "difficulty": "ADVANCED",
+    "parameters": {
+      "approaches": [
+        {
+          "sets": 4,
+          "reps": 8,
+          "weightRange": 25.0
+        }
+      ],
+      "tempo": {
+        "eccentric": 2,
+        "pause": 1,
+        "concentric": 1,
+        "rest": 0
+      }
+    }
+  },
+  {
+    "id": 17,
+    "name": "Эллиптический тренажёр",
+    "type": "CARDIO",
+    "targetMuscles": [
+      "Ноги",
+      "Ягодицы"
+    ],
+    "equipment": "ELLIPTICAL",
+    "stepByStepDescription": [
+      "Держитесь за поручни",
+      "Начните движение ногами"
+    ],
+    "img": "elliptical.jpg",
+    "difficulty": "BEGINNER",
+    "parameters": {
+      "approaches": [
+        {
+          "sets": 1,
+          "reps": null,
+          "weightRange": null
+        }
+      ],
+      "duration": 2100
+    }
+  },
+  {
+    "id": 18,
+    "name": "Скручивания на пресс",
+    "type": "STRENGTH",
+    "targetMuscles": [
+      "Прямая мышца живота"
+    ],
+    "equipment": "BODYWEIGHT",
+    "stepByStepDescription": [
+      "Лягте на спину, согните ноги",
+      "Поднимите корпус к коленям"
+    ],
+    "img": "crunches.jpg",
+    "difficulty": "BEGINNER",
+    "parameters": {
+      "approaches": [
+        {
+          "sets": 3,
+          "reps": 20,
+          "weightRange": null
+        }
+      ],
+      "tempo": {
+        "eccentric": 2,
+        "pause": 1,
+        "concentric": 1,
+        "rest": 0
+      }
+    }
+  },
+  {
+    "id": 19,
+    "name": "Бёрпи",
+    "type": "CARDIO",
+    "targetMuscles": [
+      "Всё тело"
+    ],
+    "equipment": "BODYWEIGHT",
+    "stepByStepDescription": [
+      "Примите положение упора лёжа",
+      "Подтяните ноги к рукам",
+      "Выпрыгните вверх"
+    ],
+    "img": "burpees.jpg",
+    "difficulty": "ADVANCED",
+    "parameters": {
+      "approaches": [
+        {
+          "sets": 5,
+          "reps": 10,
+          "weightRange": null
+        }
+      ],
+      "duration": 600
+    }
+  },
+  {
+    "id": 20,
+    "name": "Мобилизация грудного отдела",
+    "type": "FLEXIBILITY",
+    "targetMuscles": [
+      "Грудные",
+      "Верх спины"
+    ],
+    "equipment": "FOAM_ROLLER",
+    "stepByStepDescription": [
+      "Лягте на роллер вдоль позвоночника",
+      "Разведите руки в стороны"
+    ],
+    "img": "thoracic_mobility.jpg",
+    "difficulty": "INTERMEDIATE",
+    "parameters": {
+      "approaches": [
+        {
+          "sets": 3,
+          "reps": 12,
+          "weightRange": null
+        }
+      ],
+      "duration": 300
+    }
+  }
+]
