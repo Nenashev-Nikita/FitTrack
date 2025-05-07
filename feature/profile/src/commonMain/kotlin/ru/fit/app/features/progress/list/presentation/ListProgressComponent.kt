@@ -10,6 +10,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import kotlinx.datetime.LocalDate
+import kotlinx.serialization.Serializable
 import ru.fit.app.features.progress.list.domain.usecase.GetProgressExerciseUseCase
 
 class ListProgressComponent(
@@ -34,7 +36,13 @@ class ListProgressComponent(
 		coroutineScope.launch {
 			_screenState.value = State.Loading
 			try {
-				val exercises = getProgressExerciseUseCase()
+				val exercises = listOf(
+					ExerciseProgress(1, 1, LocalDate(2025, 5, 1), 100f),
+					ExerciseProgress(2, 1, kotlinx.datetime.LocalDate(2025, 5, 2), 105f),
+					ExerciseProgress(3, 1, kotlinx.datetime.LocalDate(2025, 5, 3), 110f),
+					ExerciseProgress(4, 1, kotlinx.datetime.LocalDate(2025, 5, 4), 108f),
+					ExerciseProgress(5, 1, kotlinx.datetime.LocalDate(2025, 5, 5), 112f)
+				)
 				_screenState.value = State.Content(
 					exercises = exercises,
 				)
@@ -52,3 +60,11 @@ class ListProgressComponent(
 		back()
 	}
 }
+
+@Serializable
+data class ExerciseProgress(
+	val id: Int,
+	val exerciseId: Int,
+	val date: LocalDate,
+	val oneRepMax: Float
+)

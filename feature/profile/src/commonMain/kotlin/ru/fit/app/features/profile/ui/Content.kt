@@ -67,7 +67,7 @@ fun Content(
 		ProgressButton(
 			title = "Прогресс по упражнениям",
 			subtitle = "Здесь вы сможете проверить свой прогресс про упражнениям",
-			onClick = {},
+			onClick = onProgressClick,
 			modifier = Modifier.padding(16.dp)
 		)
 

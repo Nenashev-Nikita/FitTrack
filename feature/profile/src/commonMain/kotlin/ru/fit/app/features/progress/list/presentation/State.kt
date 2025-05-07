@@ -1,7 +1,5 @@
 package ru.fit.app.features.progress.list.presentation
 
-import ru.fit.app.shared.exercise.domain.entity.Exercise
-
 sealed interface State {
 
 	data object Initial : State
@@ -11,6 +9,6 @@ sealed interface State {
 	data object Error : State
 
 	data class Content(
-		val exercises: List<Exercise>,
+		val exercises: List<ExerciseProgress>,
 	) : State
 }

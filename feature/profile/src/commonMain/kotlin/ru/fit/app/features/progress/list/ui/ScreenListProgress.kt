@@ -12,6 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import ru.fit.app.features.progress.list.presentation.ListProgressComponent
 import ru.fit.app.features.progress.list.presentation.State
+import ru.fit.app.shared.exercise.domain.entity.Exercise
 
 @Composable
 fun ScreenListProgress(component: ListProgressComponent) {
@@ -33,9 +34,16 @@ fun ScreenListProgress(component: ListProgressComponent) {
 
 			is State.Content -> {
 				Content(
-					exercises = state.exercises,
-					onWorkoutSelected = component::navigationDetails,
-					onBack = component::navigationBack,
+					progress = state.exercises,
+					modifier = Modifier,
+					exercise = Exercise(
+						id = 1,
+						name = "Жим лежа",
+						type = Exercise.ExerciseType.STRENGTH,
+						targetMuscles = listOf("Грудь", "Трицепс"),
+						equipment = Exercise.EquipmentType.BARBELL,
+						difficulty = Exercise.DifficultyLevel.INTERMEDIATE
+					)
 				)
 			}
 		}
